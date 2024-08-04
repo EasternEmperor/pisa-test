@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.research.pisatest.mapper.UserDOMapper">
-  <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.UserDO">
+<mapper namespace="com.research.pisatest.mapper.AirControllerDataMapper">
+  <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.AirControllerData">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="role" jdbcType="INTEGER" property="role" />
+    <result column="ith_answer" jdbcType="INTEGER" property="ithAnswer" />
+    <result column="event" jdbcType="VARCHAR" property="event" />
+    <result column="event_type" jdbcType="VARCHAR" property="eventType" />
+    <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,16 +68,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_name, role
+    id, user_name, ith_answer, event, event_type, event_start_time
   </sql>
-  <select id="selectByExample" parameterType="com.research.pisatest.pojo.UserDOExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.research.pisatest.pojo.AirControllerDataExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from p_pt_user
+    from p_pt_air_controller_data
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,56 +88,70 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from p_pt_user
+    from p_pt_air_controller_data
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from p_pt_user
+    delete from p_pt_air_controller_data
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.research.pisatest.pojo.UserDOExample">
-    delete from p_pt_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.research.pisatest.pojo.UserDO">
+  <insert id="insert" parameterType="com.research.pisatest.pojo.AirControllerData">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into p_pt_user (user_name, role)
-    values (#{userName,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER})
+    insert into p_pt_air_controller_data (user_name, ith_answer, event, 
+      event_type, event_start_time)
+    values (#{userName,jdbcType=VARCHAR}, #{ithAnswer,jdbcType=INTEGER}, #{event,jdbcType=VARCHAR}, 
+      #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.research.pisatest.pojo.UserDO">
+  <insert id="insertSelective" parameterType="com.research.pisatest.pojo.AirControllerData">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into p_pt_user
+    insert into p_pt_air_controller_data
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userName != null">
         user_name,
       </if>
-      <if test="role != null">
-        role,
+      <if test="ithAnswer != null">
+        ith_answer,
+      </if>
+      <if test="event != null">
+        event,
+      </if>
+      <if test="eventType != null">
+        event_type,
+      </if>
+      <if test="eventStartTime != null">
+        event_start_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="role != null">
-        #{role,jdbcType=INTEGER},
+      <if test="ithAnswer != null">
+        #{ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="event != null">
+        #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="eventType != null">
+        #{eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventStartTime != null">
+        #{eventStartTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.research.pisatest.pojo.UserDOExample" resultType="java.lang.Long">
-    select count(*) from p_pt_user
+  <select id="countByExample" parameterType="com.research.pisatest.pojo.AirControllerDataExample" resultType="java.lang.Long">
+    select count(*) from p_pt_air_controller_data
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update p_pt_user
+    update p_pt_air_controller_data
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -142,8 +159,17 @@
       <if test="record.userName != null">
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
-      <if test="record.role != null">
-        role = #{record.role,jdbcType=INTEGER},
+      <if test="record.ithAnswer != null">
+        ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="record.event != null">
+        event = #{record.event,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eventType != null">
+        event_type = #{record.eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eventStartTime != null">
+        event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -151,30 +177,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update p_pt_user
+    update p_pt_air_controller_data
     set id = #{record.id,jdbcType=BIGINT},
       user_name = #{record.userName,jdbcType=VARCHAR},
-      role = #{record.role,jdbcType=INTEGER}
+      ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
+      event = #{record.event,jdbcType=VARCHAR},
+      event_type = #{record.eventType,jdbcType=VARCHAR},
+      event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.research.pisatest.pojo.UserDO">
-    update p_pt_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.research.pisatest.pojo.AirControllerData">
+    update p_pt_air_controller_data
     <set>
       <if test="userName != null">
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="role != null">
-        role = #{role,jdbcType=INTEGER},
+      <if test="ithAnswer != null">
+        ith_answer = #{ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="event != null">
+        event = #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="eventType != null">
+        event_type = #{eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventStartTime != null">
+        event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.research.pisatest.pojo.UserDO">
-    update p_pt_user
+  <update id="updateByPrimaryKey" parameterType="com.research.pisatest.pojo.AirControllerData">
+    update p_pt_air_controller_data
     set user_name = #{userName,jdbcType=VARCHAR},
-      role = #{role,jdbcType=INTEGER}
+      ith_answer = #{ithAnswer,jdbcType=INTEGER},
+      event = #{event,jdbcType=VARCHAR},
+      event_type = #{eventType,jdbcType=VARCHAR},
+      event_start_time = #{eventStartTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

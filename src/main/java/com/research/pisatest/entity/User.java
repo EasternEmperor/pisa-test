@@ -1,4 +1,4 @@
-package com.research.pisatest.domain;
+package com.research.pisatest.entity;
 
 import lombok.Data;
 
