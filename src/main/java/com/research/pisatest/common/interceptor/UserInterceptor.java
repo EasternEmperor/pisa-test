@@ -44,13 +44,12 @@ public class UserInterceptor  implements HandlerInterceptor {
             if (tokenCookie != null) {
                 String token = tokenCookie.getValue();
                 if (redisUtils.containsKey(token)) {
-                    Map<String, String> map = (Map<String, String>) redisUtils.getValue(token);
-                    if (map.get("role").equals(Constants.COMMON_USER)) {
+                    String role = (String) redisUtils.getHashValue(token, "role");
+                    if (Constants.COMMON_USER.equals(role)) {
                         return true;
                     }
                 }
             }
-            return true;
         }
 
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");

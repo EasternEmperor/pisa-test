@@ -49,13 +49,12 @@ public class AdminInterceptor implements HandlerInterceptor {
             if (tokenCookie != null) {
                 String token = tokenCookie.getValue();
                 if (redisUtils.containsKey(token)) {
-                    Map<String, String> map = (Map<String, String>) redisUtils.getValue(token);
-                    if (map.get("role").equals(Constants.ADMIN)) {
+                    String role = (String) redisUtils.getHashValue(token, "role");
+                    if (Constants.ADMIN.equals(role)) {
                         return true;
                     }
                 }
             }
-            return true;
         }
 
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");

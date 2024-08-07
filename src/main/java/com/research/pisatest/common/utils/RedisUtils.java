@@ -39,6 +39,11 @@ public class RedisUtils {
         return redisTemplate.opsForValue().get(key);
     }
 
+    // 作用：从redis获取 Hash 值
+    public Object getHashValue(String key, String hashKey) {
+        return redisTemplate.opsForHash().get(key, hashKey);
+    }
+
     // 作用：判断Redis是否包含某键
     public boolean containsKey(String key) {
         return redisTemplate.hasKey(key);
