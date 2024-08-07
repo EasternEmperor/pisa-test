@@ -1,4 +1,4 @@
-package com.research.pisatest.utils;
+package com.research.pisatest.common.utils;
 
 import com.research.pisatest.common.Constants;
 import lombok.Data;
@@ -28,14 +28,14 @@ public class Result<T> {
     }
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<>(data);
-        result.setCode(Constants.SUCCESSCODE);
+        result.setCode(Constants.SUCCESS_CODE);
         result.setMessage("成功");
         return result;
     }
 
     public static <T> Result<T> success(T data,String msg) {
         Result<T> result = new Result<>(data);
-        result.setCode(Constants.SUCCESSCODE);
+        result.setCode(Constants.SUCCESS_CODE);
         result.setMessage(msg);
         return result;
     }

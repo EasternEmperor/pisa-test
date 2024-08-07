@@ -1,6 +1,7 @@
 package com.research.pisatest.service;
 
 import com.research.pisatest.dto.UserAnswerDTO;
+import com.research.pisatest.dto.UserDTO;
 import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.User;
 import com.research.pisatest.entity.UserAnswer;
@@ -18,7 +19,7 @@ public interface UserService {
      * @param userName
      * @return
      */
-    User login(String userName);
+    UserDTO login(String userName);
 
     List<UserAnswerDTO> selectAllUserAnswer();
 

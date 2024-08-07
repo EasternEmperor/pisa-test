@@ -6,11 +6,14 @@ package com.research.pisatest.common;
  * @description
  */
 public class Constants {
-    public static final String USERPATTERN = "[a-z]+[0-9]{8}";
-    public static final int COMMON = 0;
-    public static final int RESEARCHER = 1;
+    public static final String USER_PATTERN = "[a-z]+[0-9]{8}";
+    public static final String COMMON_USER = "0";
+    public static final String ADMIN = "1";
 
-    public static final String ERRORCODE = "-1";
-    public static final String SUCCESSCODE = "0";
+    public static final String ERROR_CODE = "-1";
+    public static final String SUCCESS_CODE = "0";
+
+    // 登录身份有效时间：1天
+    public static final int TTL = 1;
 
 }

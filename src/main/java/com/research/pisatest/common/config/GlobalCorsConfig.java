@@ -1,8 +1,11 @@
-package com.research.pisatest.config;
+package com.research.pisatest.common.config;
 
-import org.springframework.context.annotation.Bean;
+import com.research.pisatest.common.interceptor.AdminInterceptor;
+import com.research.pisatest.common.interceptor.UserInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -12,6 +15,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class GlobalCorsConfig implements WebMvcConfigurer {
+    @Autowired
+    private AdminInterceptor adminInterceptor;
+    @Autowired
+    private UserInterceptor userInterceptor;
+
+    /**
+     * 设置跨域
+     * @param registry
+     */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // 设置允许跨域的路径
@@ -26,5 +38,17 @@ public class GlobalCorsConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 // 跨域允许时间
                 .maxAge(3600);
+    }
+
+    /**
+     * 添加拦截器
+     * @param registry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // 管理员权限拦截器
+        registry.addInterceptor(adminInterceptor).addPathPatterns("/admin/**");
+        // 普通用户拦截
+        registry.addInterceptor(userInterceptor).addPathPatterns("/user/**").excludePathPatterns("/user/login");
     }
 }
