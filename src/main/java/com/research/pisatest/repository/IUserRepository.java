@@ -19,6 +19,12 @@ public interface IUserRepository {
 
     List<UserAnswer> selectAllUserAnswer();
 
+    List<UserAnswer> selectUserAnswerByUserName(String userName);
+
+    List<UserAnswer> selectUserAnswerByIth(Integer ith);
+
+    List<UserAnswer> selectUserAnswerByUserNameAndIth(String userName, Integer ith);
+
     DescInfo getSystemDescInfo();
 
 }

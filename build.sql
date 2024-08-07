@@ -27,6 +27,7 @@ create table p_pt_user_answer (
     key uk_user_name_ith_answer(user_name, ith_answer)
 );
 insert into p_pt_user_answer(user_name) values('xiaoming20000101');
+alter table p_pt_user_answer add index uk_user_name_ith(user_name, ith_answer);
 
 create table p_pt_air_controller_data (
     id bigint(20) not null auto_increment,

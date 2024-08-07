@@ -16,4 +16,7 @@ public class Constants {
     // 登录身份有效时间：1天
     public static final int TTL = 1;
 
+    // 筛选器的全部
+    public static final String ALL = "-1";
+
 }

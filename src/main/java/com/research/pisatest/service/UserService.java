@@ -21,7 +21,7 @@ public interface UserService {
      */
     UserDTO login(String userName);
 
-    List<UserAnswerDTO> selectAllUserAnswer();
+    List<UserAnswerDTO> getUserAnswerList(String userName, Integer ith);
 
     DescInfo getDescInfo();
 }

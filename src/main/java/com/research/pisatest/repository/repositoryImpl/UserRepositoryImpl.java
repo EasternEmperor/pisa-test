@@ -75,6 +75,46 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     /**
+     * 根据用户名查询用户的所有答题记录
+     * @param userName
+     * @return
+     */
+    @Override
+    public List<UserAnswer> selectUserAnswerByUserName(String userName) {
+        UserAnswerDOExample example = new UserAnswerDOExample();
+        example.createCriteria().andUserNameEqualTo(userName);
+        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
+        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
+    }
+
+    /**
+     * 根据ith查询所有第i次答题记录
+     * @param ith
+     * @return
+     */
+    @Override
+    public List<UserAnswer> selectUserAnswerByIth(Integer ith) {
+        UserAnswerDOExample example = new UserAnswerDOExample();
+        example.createCriteria().andIthAnswerEqualTo(ith);
+        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
+        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
+    }
+
+    /**
+     * 根据用户名和ith查询用户的所有答题记录
+     * @param userName
+     * @param ith
+     * @return
+     */
+    @Override
+    public List<UserAnswer> selectUserAnswerByUserNameAndIth(String userName, Integer ith) {
+        UserAnswerDOExample example = new UserAnswerDOExample();
+        example.createCriteria().andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
+        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
+    }
+
+    /**
      * 获取用户和试题基本信息
      * @return
      */
