@@ -5,6 +5,7 @@ import com.research.pisatest.dto.UserDTO;
 import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.User;
 import com.research.pisatest.entity.UserAnswer;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;
 
@@ -21,7 +22,5 @@ public interface UserService {
      */
     UserDTO login(String userName);
 
-    List<UserAnswerDTO> getUserAnswerList(String userName, Integer ith);
-
-    DescInfo getDescInfo();
+    void logout(HttpServletRequest request);
 }

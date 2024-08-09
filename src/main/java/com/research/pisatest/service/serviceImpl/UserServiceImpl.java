@@ -15,9 +15,12 @@ import com.research.pisatest.exception.UserNameFormatException;
 import com.research.pisatest.repository.IUserRepository;
 import com.research.pisatest.service.UserService;
 import io.micrometer.common.util.StringUtils;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +40,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private IUserAssembler userAssembler;
-
-    @Autowired
-    private IUserAnswerAssembler userAnswerAssembler;
 
     @Autowired
     private RedisUtils redisUtils;
@@ -94,36 +94,12 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    /**
-     * 查询用户的答题记录
-     * @return
-     */
     @Override
-    public List<UserAnswerDTO> getUserAnswerList(String userName, Integer ith) {
-        if (StringUtils.isBlank(userName) || ith == null) {
-            throw new PisatestException("获取用户答题记录：userName 或 ith 为空");
+    public void logout(HttpServletRequest request) {
+        String token = request.getHeader("token");
+        if (StringUtils.isNotBlank(token)) {
+            redisUtils.deleteValue(token);
         }
-        List<UserAnswer> userAnswers = null;
-        if (Constants.ALL.equals(userName)) {
-            if (ith.equals(Integer.valueOf(Constants.ALL))) {
-                userAnswers = userRepository.selectAllUserAnswer();
-            } else {
-                userAnswers = userRepository.selectUserAnswerByIth(ith);
-            }
-        } else {
-            if (ith.equals(Integer.valueOf(Constants.ALL))) {
-                userAnswers = userRepository.selectUserAnswerByUserName(userName);
-            } else {
-                userAnswers = userRepository.selectUserAnswerByUserNameAndIth(userName, ith);
-            }
-        }
-        List<UserAnswerDTO> userAnswerDTOS = userAnswerAssembler.ToUserAnswerDTOList(userAnswers);
-        return userAnswerDTOS;
-    }
-
-    @Override
-    public DescInfo getDescInfo() {
-        return userRepository.getSystemDescInfo();
     }
 
 

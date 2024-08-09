@@ -49,6 +49,6 @@ public class GlobalCorsConfig implements WebMvcConfigurer {
         // 管理员权限拦截器
         registry.addInterceptor(adminInterceptor).addPathPatterns("/admin/**");
         // 普通用户拦截
-        registry.addInterceptor(userInterceptor).addPathPatterns("/user/**").excludePathPatterns("/user/login");
+        registry.addInterceptor(userInterceptor).addPathPatterns("/user/**").excludePathPatterns("/user/login", "/user/logout");
     }
 }

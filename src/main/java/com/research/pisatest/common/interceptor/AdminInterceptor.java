@@ -7,6 +7,7 @@ package com.research.pisatest.common.interceptor;
  */
 import com.research.pisatest.common.Constants;
 import com.research.pisatest.common.utils.RedisUtils;
+import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -39,20 +40,13 @@ public class AdminInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 从请求头中取出cookie
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            Cookie tokenCookie = Arrays.stream(cookies)
-                    .filter(cookie -> "token".equals(cookie.getName()))
-                    .findFirst()
-                    .orElse(null);
+        String token = request.getHeader("token");
 
-            if (tokenCookie != null) {
-                String token = tokenCookie.getValue();
-                if (redisUtils.containsKey(token)) {
-                    String role = (String) redisUtils.getHashValue(token, "role");
-                    if (Constants.ADMIN.equals(role)) {
-                        return true;
-                    }
+        if (StringUtils.isNotBlank(token)) {
+            if (redisUtils.containsKey(token)) {
+                String role = (String) redisUtils.getHashValue(token, "role");
+                if (Constants.ADMIN.equals(role)) {
+                    return true;
                 }
             }
         }

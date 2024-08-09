@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zhongqilong
@@ -60,6 +61,28 @@ public class UserRepositoryImpl implements IUserRepository {
     public void insert(User user) {
         UserDO userDO = userAssembler.toUserDO(user);
         userDOMapper.insert(userDO);
+    }
+
+    /**
+     * 查询所有用户名
+     * @return
+     */
+    @Override
+    public List<UserDO> selectAllUserName() {
+        UserDOExample example = new UserDOExample();
+        example.createCriteria().andUserNameIsNotNull();
+        return userDOMapper.selectByExample(example);
+    }
+
+    /**
+     * 查询所有题目
+     * @return
+     */
+    @Override
+    public List<QuestionDO> selectAllQuestionNo() {
+        QuestionDOExample example = new QuestionDOExample();
+        example.createCriteria().andIdIsNotNull();
+        return questionDOMapper.selectByExample(example);
     }
 
     /**
