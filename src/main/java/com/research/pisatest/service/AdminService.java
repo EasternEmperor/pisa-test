@@ -3,6 +3,7 @@ package com.research.pisatest.service;
 import com.research.pisatest.dto.UserAnswerDTO;
 import com.research.pisatest.entity.DescInfo;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author zhongqilong
@@ -16,5 +17,5 @@ public interface AdminService {
 
     List<String> getAllUserName();
 
-    List<String> getAllAnswerNo();
+    Set<String> getAllAnswerNo();
 }

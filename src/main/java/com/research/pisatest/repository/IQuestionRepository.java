@@ -15,4 +15,6 @@ public interface IQuestionRepository {
     public Boolean deleteQuestion(QuestionDO questionDO);
 
     public void modifyQuestionNo(List<QuestionDO> questionDOList);
+
+    public List<QuestionDO> getAllQuestionName();
 }

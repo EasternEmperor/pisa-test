@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author zhongqilong
@@ -48,7 +49,7 @@ public class AdminController {
     @GetMapping("/getAllAnswerNo")
     public Result getAllAnswerNo() {
         try {
-            List<String> userAnswerIthList = adminService.getAllAnswerNo();
+            Set<String> userAnswerIthList = adminService.getAllAnswerNo();
             return Result.success(userAnswerIthList, "获取所有问题编号成功");
         } catch (Exception e) {
             return Result.error(Constants.ERROR_CODE, e.getMessage());

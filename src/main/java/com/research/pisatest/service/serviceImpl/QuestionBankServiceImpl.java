@@ -83,4 +83,15 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         List<QuestionDO> questionDOList = questionAssembler.toQuestionDOList(questionList);
         questionRepository.modifyQuestionNo(questionDOList);
     }
+
+    /**
+     * 查询所有问题名称
+     * @return
+     */
+    @Override
+    public List<String> getAllQuestionName() {
+        List<QuestionDO> questionDOList = questionRepository.getAllQuestionName();
+        List<String> res = questionDOList.stream().map(QuestionDO::getHtmlName).toList();
+        return res;
+    }
 }

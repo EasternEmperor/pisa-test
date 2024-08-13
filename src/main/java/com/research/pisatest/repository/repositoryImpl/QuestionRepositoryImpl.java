@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zhongqilong
@@ -65,5 +66,12 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
             example.createCriteria().andIdEqualTo(questionDO.getId());
             questionDOMapper.updateByExample(questionDO, example);
         }
+    }
+
+    @Override
+    public List<QuestionDO> getAllQuestionName() {
+        QuestionDOExample example = new QuestionDOExample();
+        example.createCriteria().andIdIsNotNull();
+        return questionDOMapper.selectByExample(example);
     }
 }

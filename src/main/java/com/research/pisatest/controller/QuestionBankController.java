@@ -77,4 +77,18 @@ public class QuestionBankController {
         }
     }
 
+    /**
+     * 获取所有题目名称
+     * @return
+     */
+    @GetMapping("/getAllQuestionName")
+    public Result getAllQuestionName() {
+        try {
+            List<String> questionNameList = questionBankService.getAllQuestionName();
+            return Result.success(questionNameList, "获取问题名称列表成功");
+        } catch (Exception e) {
+            return Result.error(Constants.ERROR_CODE, "获取问题名称列表失败：" + e.getMessage());
+        }
+    }
+
 }

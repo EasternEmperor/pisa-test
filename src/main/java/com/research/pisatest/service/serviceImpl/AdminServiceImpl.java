@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -50,9 +51,9 @@ public class AdminServiceImpl implements AdminService {
      * @return
      */
     @Override
-    public List<String> getAllAnswerNo() {
+    public Set<String> getAllAnswerNo() {
         List<UserAnswerDO> userAnswerDOList = userRepository.selectAllAnswerNo();
-        List<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer())).collect(Collectors.toList());
+        Set<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer())).collect(Collectors.toSet());
         res.add(Constants.ALL);
         return res;
     }

@@ -17,4 +17,6 @@ public interface QuestionBankService {
     Boolean deleteQuestion(Question question);
 
     void modifyQuestionNo(List<Question> questionList);
+
+    List<String> getAllQuestionName();
 }
