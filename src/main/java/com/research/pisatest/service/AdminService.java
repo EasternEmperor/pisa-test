@@ -2,8 +2,6 @@ package com.research.pisatest.service;
 
 import com.research.pisatest.dto.UserAnswerDTO;
 import com.research.pisatest.entity.DescInfo;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -18,5 +16,5 @@ public interface AdminService {
 
     List<String> getAllUserName();
 
-    List<String> getAllQuestionNo();
+    List<String> getAllAnswerNo();
 }

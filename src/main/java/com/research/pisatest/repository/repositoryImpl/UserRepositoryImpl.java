@@ -79,10 +79,10 @@ public class UserRepositoryImpl implements IUserRepository {
      * @return
      */
     @Override
-    public List<QuestionDO> selectAllQuestionNo() {
-        QuestionDOExample example = new QuestionDOExample();
+    public List<UserAnswerDO> selectAllAnswerNo() {
+        UserAnswerDOExample example = new UserAnswerDOExample();
         example.createCriteria().andIdIsNotNull();
-        return questionDOMapper.selectByExample(example);
+        return userAnswerDOMapper.selectByExample(example);
     }
 
     /**

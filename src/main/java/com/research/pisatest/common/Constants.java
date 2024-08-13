@@ -19,4 +19,7 @@ public class Constants {
     // 筛选器的全部
     public static final String ALL = "-1";
 
+    // 被删除的题目题号
+    public static final int DELETE_QUESTION_NO = -1;
+
 }

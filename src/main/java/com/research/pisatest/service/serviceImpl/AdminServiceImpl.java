@@ -9,6 +9,7 @@ import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.UserAnswer;
 import com.research.pisatest.exception.PisatestException;
 import com.research.pisatest.pojo.QuestionDO;
+import com.research.pisatest.pojo.UserAnswerDO;
 import com.research.pisatest.pojo.UserDO;
 import com.research.pisatest.repository.IUserRepository;
 import com.research.pisatest.service.AdminService;
@@ -45,13 +46,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     /**
-     * 查询所有题目
+     * 查询所有答题记录
      * @return
      */
     @Override
-    public List<String> getAllQuestionNo() {
-        List<QuestionDO> questionDOList = userRepository.selectAllQuestionNo();
-        List<String> res =  questionDOList.stream().map(questionDO -> String.valueOf(questionDO.getNo())).collect(Collectors.toList());
+    public List<String> getAllAnswerNo() {
+        List<UserAnswerDO> userAnswerDOList = userRepository.selectAllAnswerNo();
+        List<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer())).collect(Collectors.toList());
         res.add(Constants.ALL);
         return res;
     }

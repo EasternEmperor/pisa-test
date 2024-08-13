@@ -1,4 +1,4 @@
-package com.research.pisatest.controller.admin;
+package com.research.pisatest.controller;
 
 import com.research.pisatest.common.Constants;
 import com.research.pisatest.common.utils.Result;
@@ -45,11 +45,11 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/getAllQuestionNo")
-    public Result getAllQuestionNo() {
+    @GetMapping("/getAllAnswerNo")
+    public Result getAllAnswerNo() {
         try {
-            List<String> questionNoList = adminService.getAllQuestionNo();
-            return Result.success(questionNoList, "获取所有问题编号成功");
+            List<String> userAnswerIthList = adminService.getAllAnswerNo();
+            return Result.success(userAnswerIthList, "获取所有问题编号成功");
         } catch (Exception e) {
             return Result.error(Constants.ERROR_CODE, e.getMessage());
         }

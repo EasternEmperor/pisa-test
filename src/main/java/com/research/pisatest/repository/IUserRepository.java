@@ -4,6 +4,7 @@ import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.User;
 import com.research.pisatest.entity.UserAnswer;
 import com.research.pisatest.pojo.QuestionDO;
+import com.research.pisatest.pojo.UserAnswerDO;
 import com.research.pisatest.pojo.UserDO;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface IUserRepository {
 
     List<UserDO> selectAllUserName();
 
-    List<QuestionDO> selectAllQuestionNo();
+    List<UserAnswerDO> selectAllAnswerNo();
 
     List<UserAnswer> selectAllUserAnswer();
 

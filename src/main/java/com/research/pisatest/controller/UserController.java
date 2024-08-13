@@ -1,4 +1,4 @@
-package com.research.pisatest.controller.user;
+package com.research.pisatest.controller;
 
 import com.research.pisatest.common.Constants;
 import com.research.pisatest.common.utils.RedisUtils;
