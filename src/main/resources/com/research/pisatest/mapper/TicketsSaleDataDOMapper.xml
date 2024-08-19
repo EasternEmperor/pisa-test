@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.research.pisatest.mapper.AirControllerDataMapper">
-  <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.AirControllerData">
+<mapper namespace="com.research.pisatest.mapper.TicketsSaleDataDOMapper">
+  <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.TicketsSaleDataDO">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="html_name" jdbcType="VARCHAR" property="htmlName" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="ith_answer" jdbcType="INTEGER" property="ithAnswer" />
-    <result column="event" jdbcType="VARCHAR" property="event" />
     <result column="event_type" jdbcType="VARCHAR" property="eventType" />
     <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
+    <result column="event_number" jdbcType="INTEGER" property="eventNumber" />
+    <result column="network" jdbcType="VARCHAR" property="network" />
+    <result column="fare_type" jdbcType="VARCHAR" property="fareType" />
+    <result column="ticket_type" jdbcType="VARCHAR" property="ticketType" />
+    <result column="number_trips" jdbcType="VARCHAR" property="numberTrips" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,16 +73,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_name, ith_answer, event, event_type, event_start_time
+    id, html_name, user_name, ith_answer, event_type, event_start_time, event_number, 
+    network, fare_type, ticket_type, number_trips
   </sql>
-  <select id="selectByExample" parameterType="com.research.pisatest.pojo.AirControllerDataExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.research.pisatest.pojo.TicketsSaleDataDOExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from p_pt_air_controller_data
+    from p_pt_tickets_sale_data
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,36 +94,40 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from p_pt_air_controller_data
+    from p_pt_tickets_sale_data
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from p_pt_air_controller_data
+    delete from p_pt_tickets_sale_data
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.research.pisatest.pojo.AirControllerData">
+  <insert id="insert" parameterType="com.research.pisatest.pojo.TicketsSaleDataDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into p_pt_air_controller_data (user_name, ith_answer, event, 
-      event_type, event_start_time)
-    values (#{userName,jdbcType=VARCHAR}, #{ithAnswer,jdbcType=INTEGER}, #{event,jdbcType=VARCHAR}, 
-      #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP})
+    insert into p_pt_tickets_sale_data (html_name, user_name, ith_answer, 
+      event_type, event_start_time, event_number, 
+      network, fare_type, ticket_type, 
+      number_trips)
+    values (#{htmlName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{ithAnswer,jdbcType=INTEGER}, 
+      #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP}, #{eventNumber,jdbcType=INTEGER}, 
+      #{network,jdbcType=VARCHAR}, #{fareType,jdbcType=VARCHAR}, #{ticketType,jdbcType=VARCHAR}, 
+      #{numberTrips,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.research.pisatest.pojo.AirControllerData">
+  <insert id="insertSelective" parameterType="com.research.pisatest.pojo.TicketsSaleDataDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into p_pt_air_controller_data
+    insert into p_pt_tickets_sale_data
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="htmlName != null">
+        html_name,
+      </if>
       <if test="userName != null">
         user_name,
       </if>
       <if test="ithAnswer != null">
         ith_answer,
-      </if>
-      <if test="event != null">
-        event,
       </if>
       <if test="eventType != null">
         event_type,
@@ -125,16 +135,31 @@
       <if test="eventStartTime != null">
         event_start_time,
       </if>
+      <if test="eventNumber != null">
+        event_number,
+      </if>
+      <if test="network != null">
+        network,
+      </if>
+      <if test="fareType != null">
+        fare_type,
+      </if>
+      <if test="ticketType != null">
+        ticket_type,
+      </if>
+      <if test="numberTrips != null">
+        number_trips,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="htmlName != null">
+        #{htmlName,jdbcType=VARCHAR},
+      </if>
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
       </if>
       <if test="ithAnswer != null">
         #{ithAnswer,jdbcType=INTEGER},
-      </if>
-      <if test="event != null">
-        #{event,jdbcType=VARCHAR},
       </if>
       <if test="eventType != null">
         #{eventType,jdbcType=VARCHAR},
@@ -142,19 +167,37 @@
       <if test="eventStartTime != null">
         #{eventStartTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="eventNumber != null">
+        #{eventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="network != null">
+        #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="fareType != null">
+        #{fareType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketType != null">
+        #{ticketType,jdbcType=VARCHAR},
+      </if>
+      <if test="numberTrips != null">
+        #{numberTrips,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.research.pisatest.pojo.AirControllerDataExample" resultType="java.lang.Long">
-    select count(*) from p_pt_air_controller_data
+  <select id="countByExample" parameterType="com.research.pisatest.pojo.TicketsSaleDataDOExample" resultType="java.lang.Long">
+    select count(*) from p_pt_tickets_sale_data
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update p_pt_air_controller_data
+    update p_pt_tickets_sale_data
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.htmlName != null">
+        html_name = #{record.htmlName,jdbcType=VARCHAR},
       </if>
       <if test="record.userName != null">
         user_name = #{record.userName,jdbcType=VARCHAR},
@@ -162,14 +205,26 @@
       <if test="record.ithAnswer != null">
         ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
       </if>
-      <if test="record.event != null">
-        event = #{record.event,jdbcType=VARCHAR},
-      </if>
       <if test="record.eventType != null">
         event_type = #{record.eventType,jdbcType=VARCHAR},
       </if>
       <if test="record.eventStartTime != null">
         event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.eventNumber != null">
+        event_number = #{record.eventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.network != null">
+        network = #{record.network,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fareType != null">
+        fare_type = #{record.fareType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketType != null">
+        ticket_type = #{record.ticketType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numberTrips != null">
+        number_trips = #{record.numberTrips,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -177,28 +232,33 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update p_pt_air_controller_data
+    update p_pt_tickets_sale_data
     set id = #{record.id,jdbcType=BIGINT},
+      html_name = #{record.htmlName,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
-      event = #{record.event,jdbcType=VARCHAR},
       event_type = #{record.eventType,jdbcType=VARCHAR},
-      event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP}
+      event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
+      event_number = #{record.eventNumber,jdbcType=INTEGER},
+      network = #{record.network,jdbcType=VARCHAR},
+      fare_type = #{record.fareType,jdbcType=VARCHAR},
+      ticket_type = #{record.ticketType,jdbcType=VARCHAR},
+      number_trips = #{record.numberTrips,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.research.pisatest.pojo.AirControllerData">
-    update p_pt_air_controller_data
+  <update id="updateByPrimaryKeySelective" parameterType="com.research.pisatest.pojo.TicketsSaleDataDO">
+    update p_pt_tickets_sale_data
     <set>
+      <if test="htmlName != null">
+        html_name = #{htmlName,jdbcType=VARCHAR},
+      </if>
       <if test="userName != null">
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="ithAnswer != null">
         ith_answer = #{ithAnswer,jdbcType=INTEGER},
-      </if>
-      <if test="event != null">
-        event = #{event,jdbcType=VARCHAR},
       </if>
       <if test="eventType != null">
         event_type = #{eventType,jdbcType=VARCHAR},
@@ -206,16 +266,36 @@
       <if test="eventStartTime != null">
         event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="eventNumber != null">
+        event_number = #{eventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="network != null">
+        network = #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="fareType != null">
+        fare_type = #{fareType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketType != null">
+        ticket_type = #{ticketType,jdbcType=VARCHAR},
+      </if>
+      <if test="numberTrips != null">
+        number_trips = #{numberTrips,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.research.pisatest.pojo.AirControllerData">
-    update p_pt_air_controller_data
-    set user_name = #{userName,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.research.pisatest.pojo.TicketsSaleDataDO">
+    update p_pt_tickets_sale_data
+    set html_name = #{htmlName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
       ith_answer = #{ithAnswer,jdbcType=INTEGER},
-      event = #{event,jdbcType=VARCHAR},
       event_type = #{eventType,jdbcType=VARCHAR},
-      event_start_time = #{eventStartTime,jdbcType=TIMESTAMP}
+      event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
+      event_number = #{eventNumber,jdbcType=INTEGER},
+      network = #{network,jdbcType=VARCHAR},
+      fare_type = #{fareType,jdbcType=VARCHAR},
+      ticket_type = #{ticketType,jdbcType=VARCHAR},
+      number_trips = #{numberTrips,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

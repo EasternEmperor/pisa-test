@@ -13,9 +13,12 @@ create table p_pt_question (
     id bigint(20) not null auto_increment,
     no int(10) not null default -1,
     html_name varchar(100) not null default "" comment '题目对应的前端文件名',
-    primary key(id)
+    data_table varchar(50) not null default "" comment '题目答题数据存储的后端数据表名',
+    primary key(id),
+    key data_table(data_table)
 );
-insert into p_pt_question(no, html_name) values(0, 'index.html');
+insert into p_pt_question(no, html_name, data_table) values(-1, 'index.html', 'p_pt_air_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(-1, 'hello.html', 'p_pt_tickets_sale_data');
 
 create table p_pt_user_answer (
     id bigint(20) not null auto_increment,
@@ -45,7 +48,7 @@ create table p_pt_air_controller_data (
     primary key(id),
     key uk_user_name_ith_answer(user_name, ith_answer)
 );
-insert into p_pt_air_controller_data(user_name) values('xiaoming20000101');
+insert into p_pt_air_controller_data(html_name,user_name) values('index.html', 'xiaoming20000101');
 
 create table p_pt_tickets_sale_data (
     id bigint(20) not null auto_increment,
@@ -62,4 +65,4 @@ create table p_pt_tickets_sale_data (
     primary key (id),
     key uk_user_name_ith_answer(user_name, ith_answer)
 );
-insert into p_pt_tickets_sale_data(user_name) values('xiaoming20000101');
+insert into p_pt_tickets_sale_data(html_name, user_name) values('hello.html','xiaoming20000101');

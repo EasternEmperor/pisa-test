@@ -1,28 +1,20 @@
 package com.research.pisatest.service.serviceImpl;
 
-import com.research.pisatest.assembler.IUserAnswerAssembler;
 import com.research.pisatest.assembler.IUserAssembler;
 import com.research.pisatest.common.Constants;
 import com.research.pisatest.common.utils.RedisUtils;
-import com.research.pisatest.dto.UserAnswerDTO;
 import com.research.pisatest.dto.UserDTO;
-import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.User;
-import com.research.pisatest.entity.UserAnswer;
-import com.research.pisatest.exception.PisatestException;
 import com.research.pisatest.exception.TokenException;
 import com.research.pisatest.exception.UserNameFormatException;
 import com.research.pisatest.repository.IUserRepository;
 import com.research.pisatest.service.UserService;
 import io.micrometer.common.util.StringUtils;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 

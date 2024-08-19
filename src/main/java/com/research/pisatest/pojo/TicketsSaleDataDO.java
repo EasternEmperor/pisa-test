@@ -2,7 +2,7 @@ package com.research.pisatest.pojo;
 
 import java.util.Date;
 
-public class AirControllerDataDO {
+public class TicketsSaleDataDO {
     private Long id;
 
     private String htmlName;
@@ -11,23 +11,19 @@ public class AirControllerDataDO {
 
     private Integer ithAnswer;
 
-    private String event;
-
     private String eventType;
 
     private Date eventStartTime;
 
     private Integer eventNumber;
 
-    private String topSetting;
+    private String network;
 
-    private String centralSetting;
+    private String fareType;
 
-    private String bottomSetting;
+    private String ticketType;
 
-    private String tempValue;
-
-    private String humidValue;
+    private String numberTrips;
 
     public Long getId() {
         return id;
@@ -61,14 +57,6 @@ public class AirControllerDataDO {
         this.ithAnswer = ithAnswer;
     }
 
-    public String getEvent() {
-        return event;
-    }
-
-    public void setEvent(String event) {
-        this.event = event == null ? null : event.trim();
-    }
-
     public String getEventType() {
         return eventType;
     }
@@ -93,43 +81,35 @@ public class AirControllerDataDO {
         this.eventNumber = eventNumber;
     }
 
-    public String getTopSetting() {
-        return topSetting;
+    public String getNetwork() {
+        return network;
     }
 
-    public void setTopSetting(String topSetting) {
-        this.topSetting = topSetting == null ? null : topSetting.trim();
+    public void setNetwork(String network) {
+        this.network = network == null ? null : network.trim();
     }
 
-    public String getCentralSetting() {
-        return centralSetting;
+    public String getFareType() {
+        return fareType;
     }
 
-    public void setCentralSetting(String centralSetting) {
-        this.centralSetting = centralSetting == null ? null : centralSetting.trim();
+    public void setFareType(String fareType) {
+        this.fareType = fareType == null ? null : fareType.trim();
     }
 
-    public String getBottomSetting() {
-        return bottomSetting;
+    public String getTicketType() {
+        return ticketType;
     }
 
-    public void setBottomSetting(String bottomSetting) {
-        this.bottomSetting = bottomSetting == null ? null : bottomSetting.trim();
+    public void setTicketType(String ticketType) {
+        this.ticketType = ticketType == null ? null : ticketType.trim();
     }
 
-    public String getTempValue() {
-        return tempValue;
+    public String getNumberTrips() {
+        return numberTrips;
     }
 
-    public void setTempValue(String tempValue) {
-        this.tempValue = tempValue == null ? null : tempValue.trim();
-    }
-
-    public String getHumidValue() {
-        return humidValue;
-    }
-
-    public void setHumidValue(String humidValue) {
-        this.humidValue = humidValue == null ? null : humidValue.trim();
+    public void setNumberTrips(String numberTrips) {
+        this.numberTrips = numberTrips == null ? null : numberTrips.trim();
     }
 }

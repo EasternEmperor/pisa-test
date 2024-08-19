@@ -7,6 +7,8 @@ public class QuestionDO {
 
     private String htmlName;
 
+    private String dataTable;
+
     public Long getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class QuestionDO {
 
     public void setHtmlName(String htmlName) {
         this.htmlName = htmlName == null ? null : htmlName.trim();
+    }
+
+    public String getDataTable() {
+        return dataTable;
+    }
+
+    public void setDataTable(String dataTable) {
+        this.dataTable = dataTable == null ? null : dataTable.trim();
     }
 }

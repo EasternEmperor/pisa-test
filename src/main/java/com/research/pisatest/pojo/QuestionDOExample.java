@@ -293,6 +293,76 @@ public class QuestionDOExample {
             addCriterion("html_name not between", value1, value2, "htmlName");
             return (Criteria) this;
         }
+
+        public Criteria andDataTableIsNull() {
+            addCriterion("data_table is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableIsNotNull() {
+            addCriterion("data_table is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableEqualTo(String value) {
+            addCriterion("data_table =", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableNotEqualTo(String value) {
+            addCriterion("data_table <>", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableGreaterThan(String value) {
+            addCriterion("data_table >", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableGreaterThanOrEqualTo(String value) {
+            addCriterion("data_table >=", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableLessThan(String value) {
+            addCriterion("data_table <", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableLessThanOrEqualTo(String value) {
+            addCriterion("data_table <=", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableLike(String value) {
+            addCriterion("data_table like", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableNotLike(String value) {
+            addCriterion("data_table not like", value, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableIn(List<String> values) {
+            addCriterion("data_table in", values, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableNotIn(List<String> values) {
+            addCriterion("data_table not in", values, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableBetween(String value1, String value2) {
+            addCriterion("data_table between", value1, value2, "dataTable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataTableNotBetween(String value1, String value2) {
+            addCriterion("data_table not between", value1, value2, "dataTable");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

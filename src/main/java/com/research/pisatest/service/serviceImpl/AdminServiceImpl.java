@@ -1,14 +1,11 @@
 package com.research.pisatest.service.serviceImpl;
 
 import com.research.pisatest.assembler.IUserAnswerAssembler;
-import com.research.pisatest.assembler.IUserAssembler;
 import com.research.pisatest.common.Constants;
-import com.research.pisatest.common.utils.RedisUtils;
 import com.research.pisatest.dto.UserAnswerDTO;
 import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.UserAnswer;
-import com.research.pisatest.exception.PisatestException;
-import com.research.pisatest.pojo.QuestionDO;
+import com.research.pisatest.exception.PisaTestException;
 import com.research.pisatest.pojo.UserAnswerDO;
 import com.research.pisatest.pojo.UserDO;
 import com.research.pisatest.repository.IUserRepository;
@@ -65,7 +62,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<UserAnswerDTO> getUserAnswerList(String userName, Integer ith) {
         if (StringUtils.isBlank(userName) || ith == null) {
-            throw new PisatestException("获取用户答题记录：userName 或 ith 为空");
+            throw new PisaTestException("获取用户答题记录：userName 或 ith 为空");
         }
         List<UserAnswer> userAnswers = null;
         if (Constants.ALL.equals(userName)) {

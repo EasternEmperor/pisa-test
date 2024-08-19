@@ -5,8 +5,8 @@ package com.research.pisatest.exception;
  * @date 2024/8/7 13:28
  * @description
  */
-public class PisatestException extends RuntimeException{
-    public PisatestException(String message) {
+public class PisaTestException extends RuntimeException{
+    public PisaTestException(String message) {
         super(message);
     }
 }
