@@ -30,9 +30,9 @@ public class AnswerDataController {
     private IAnswerDataAssembler answerDataAssembler;
 
     @GetMapping("/getAnswerData")
-    public Result getAnswerData(HttpServletRequest request, @Valid String htmlName) {
+    public Result getAnswerData(HttpServletRequest request, @Valid String htmlName, @Valid String userName, @Valid Integer ithAnswer) {
         try {
-            List<AnswerDataDTO> answerDataDTOList = answerDataAssembler.toDTOList(answerDataService.getAnswerData(htmlName));
+            List<AnswerDataDTO> answerDataDTOList = answerDataAssembler.toDTOList(answerDataService.getAnswerData(htmlName, userName, ithAnswer));
             return Result.success(answerDataDTOList, "获取用户答题数据成功");
         } catch (Exception e) {
             return Result.error(Constants.ERROR_CODE, e.getMessage());

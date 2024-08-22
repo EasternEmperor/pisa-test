@@ -66,13 +66,13 @@ public class AdminServiceImpl implements AdminService {
         }
         List<UserAnswer> userAnswers = null;
         if (Constants.ALL.equals(userName)) {
-            if (ith.equals(Integer.valueOf(Constants.ALL))) {
+            if (Constants.ALL.equals(String.valueOf(ith))) {
                 userAnswers = userRepository.selectAllUserAnswer();
             } else {
                 userAnswers = userRepository.selectUserAnswerByIth(ith);
             }
         } else {
-            if (ith.equals(Integer.valueOf(Constants.ALL))) {
+            if (Constants.ALL.equals(String.valueOf(ith))) {
                 userAnswers = userRepository.selectUserAnswerByUserName(userName);
             } else {
                 userAnswers = userRepository.selectUserAnswerByUserNameAndIth(userName, ith);

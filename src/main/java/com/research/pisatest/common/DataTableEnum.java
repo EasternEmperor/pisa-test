@@ -5,9 +5,10 @@ import com.research.pisatest.exception.PisaTestException;
 /**
  * @author zhongqilong
  * @date 2024/8/20 00:02
- * @description
+ * @description 每个问题对应的数据表
  */
 public enum DataTableEnum {
+    UNKNOWN_TABLE("unknown_table", -1),
     AIR_CONDITIONER_DATA("p_pt_air_controller_data", 1),
     TICKETS_SALE_DATA("p_pt_tickets_sale_data", 2);
 
@@ -32,7 +33,7 @@ public enum DataTableEnum {
                 return dataTableEnum;
             }
         }
-        throw new PisaTestException("No such data table: " + tableName);
+        return UNKNOWN_TABLE;
     }
 
 }

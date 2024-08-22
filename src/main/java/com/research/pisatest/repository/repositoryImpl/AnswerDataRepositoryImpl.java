@@ -36,6 +36,48 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     }
 
     @Override
+    public List<AirControllerDataDO> getAirControllerData(String htmlName, String userName) {
+        AirControllerDataDOExample example = new AirControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName);
+        return airControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<AirControllerDataDO> getAirControllerData(String htmlName, Integer ith) {
+        AirControllerDataDOExample example = new AirControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andIthAnswerEqualTo(ith);
+        return airControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<AirControllerDataDO> getAirControllerData(String htmlName, String userName, Integer ith) {
+        AirControllerDataDOExample example = new AirControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        return airControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, String userName) {
+        TicketsSaleDataDOExample example = new TicketsSaleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName);
+        return ticketsSaleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, Integer ith) {
+        TicketsSaleDataDOExample example = new TicketsSaleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andIthAnswerEqualTo(ith);
+        return ticketsSaleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, String userName, Integer ith) {
+        TicketsSaleDataDOExample example = new TicketsSaleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        return ticketsSaleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
     public List<TicketsSaleDataDO> getTicketsSaleData(String htmlName) {
         TicketsSaleDataDOExample example = new TicketsSaleDataDOExample();
         example.createCriteria().andHtmlNameEqualTo(htmlName);

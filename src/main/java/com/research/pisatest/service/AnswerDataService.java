@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AnswerDataService {
 
-    List<AnswerData> getAnswerData(String htmlName);
+    List<AnswerData> getAnswerData(String htmlName, String userName, Integer ith);
 }

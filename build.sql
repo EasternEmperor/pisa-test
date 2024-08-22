@@ -30,6 +30,7 @@ create table p_pt_user_answer (
     key uk_user_name_ith_answer(user_name, ith_answer)
 );
 insert into p_pt_user_answer(user_name) values('xiaoming20000101');
+insert into p_pt_user_answer(user_name, ith_answer) values('xiaoming20000101', 1);
 
 create table p_pt_air_controller_data (
     id bigint(20) not null auto_increment,
@@ -55,6 +56,7 @@ create table p_pt_tickets_sale_data (
     html_name varchar(100) not null default '' comment '题目对应的前端文件名',
     user_name varchar(100) not null,
     ith_answer int(2) not null default 0,
+    event varchar(50) not null default '' comment '操作事件',
     event_type varchar(10) not null default '' comment '事件类型',
     event_start_time timestamp not null default current_timestamp,
     event_number int(10) not null default 0 comment '事件对应的顺序',

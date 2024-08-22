@@ -17,6 +17,8 @@ import java.util.Date;
 public class AnswerDataDTO {
     private Long id;
 
+    private Integer tableName;
+
     private String htmlName;
 
     private String userName;

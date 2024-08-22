@@ -17,6 +17,8 @@ import java.util.Date;
 public class AnswerData {
     private Long id;
 
+    private Integer tableName;
+
     private String htmlName;
 
     private String userName;
