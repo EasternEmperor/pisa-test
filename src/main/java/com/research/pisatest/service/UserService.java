@@ -23,4 +23,6 @@ public interface UserService {
     UserDTO login(String userName);
 
     void logout(HttpServletRequest request);
+
+    List<UserAnswer> getAnswerHistory(String userName);
 }

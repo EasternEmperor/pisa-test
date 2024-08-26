@@ -1,20 +1,18 @@
 package com.research.pisatest.controller;
 
+import com.research.pisatest.assembler.IUserAnswerAssembler;
 import com.research.pisatest.common.Constants;
-import com.research.pisatest.common.utils.RedisUtils;
+import com.research.pisatest.dto.UserAnswerDTO;
 import com.research.pisatest.dto.UserDTO;
 import com.research.pisatest.common.utils.Result;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.research.pisatest.service.UserService;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 /**
  * @author zhongqilong
@@ -27,6 +25,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private IUserAnswerAssembler userAnswerAssembler;
+
+    /**
+     * 用户登录
+     * @param userName
+     * @return
+     */
     @PostMapping("/login")
     public Result login(@RequestParam String userName) {
         try {
@@ -37,6 +43,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 用户登出
+     * @param request
+     * @return
+     */
     @PostMapping("/logout")
     public Result logout(HttpServletRequest request) {
         try {
@@ -46,6 +57,16 @@ public class UserController {
             return Result.error(Constants.ERROR_CODE, e.getMessage());
         }
 
+    }
+
+    @GetMapping("/getAnswerHistory")
+    public Result getAnswerHistory(@Valid String userName) {
+        try {
+            List<UserAnswerDTO> userAnswerDTOList = userAnswerAssembler.toUserAnswerDTOList(userService.getAnswerHistory(userName));
+            return Result.success(userAnswerDTOList, "获取用户答题历史成功");
+        } catch (Exception e) {
+            return Result.error(Constants.ERROR_CODE, e.getMessage());
+        }
     }
 
 }

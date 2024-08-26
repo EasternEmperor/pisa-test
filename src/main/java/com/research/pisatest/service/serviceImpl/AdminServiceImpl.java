@@ -8,6 +8,7 @@ import com.research.pisatest.entity.UserAnswer;
 import com.research.pisatest.exception.PisaTestException;
 import com.research.pisatest.pojo.UserAnswerDO;
 import com.research.pisatest.pojo.UserDO;
+import com.research.pisatest.repository.IUserAnswerRepository;
 import com.research.pisatest.repository.IUserRepository;
 import com.research.pisatest.service.AdminService;
 import io.micrometer.common.util.StringUtils;
@@ -31,6 +32,9 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private IUserAnswerAssembler userAnswerAssembler;
 
+    @Autowired
+    private IUserAnswerRepository userAnswerRepository;
+
     /**
      * 查询所有用户名
      * @return
@@ -49,7 +53,7 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public Set<String> getAllAnswerNo() {
-        List<UserAnswerDO> userAnswerDOList = userRepository.selectAllAnswerNo();
+        List<UserAnswerDO> userAnswerDOList = userAnswerRepository.selectAllAnswerNo();
         Set<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer())).collect(Collectors.toSet());
         res.add(Constants.ALL);
         return res;
@@ -67,18 +71,18 @@ public class AdminServiceImpl implements AdminService {
         List<UserAnswer> userAnswers = null;
         if (Constants.ALL.equals(userName)) {
             if (Constants.ALL.equals(String.valueOf(ith))) {
-                userAnswers = userRepository.selectAllUserAnswer();
+                userAnswers = userAnswerRepository.selectAllUserAnswer();
             } else {
-                userAnswers = userRepository.selectUserAnswerByIth(ith);
+                userAnswers = userAnswerRepository.selectUserAnswerByIth(ith);
             }
         } else {
             if (Constants.ALL.equals(String.valueOf(ith))) {
-                userAnswers = userRepository.selectUserAnswerByUserName(userName);
+                userAnswers = userAnswerRepository.selectUserAnswerByUserName(userName);
             } else {
-                userAnswers = userRepository.selectUserAnswerByUserNameAndIth(userName, ith);
+                userAnswers = userAnswerRepository.selectUserAnswerByUserNameAndIth(userName, ith);
             }
         }
-        List<UserAnswerDTO> userAnswerDTOS = userAnswerAssembler.ToUserAnswerDTOList(userAnswers);
+        List<UserAnswerDTO> userAnswerDTOS = userAnswerAssembler.toUserAnswerDTOList(userAnswers);
         return userAnswerDTOS;
     }
 

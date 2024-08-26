@@ -1,21 +1,21 @@
 package com.research.pisatest.repository.repositoryImpl;
 
-import com.research.pisatest.assembler.IUserAnswerAssembler;
 import com.research.pisatest.assembler.IUserAssembler;
 import com.research.pisatest.entity.DescInfo;
 import com.research.pisatest.entity.User;
-import com.research.pisatest.entity.UserAnswer;
 import com.research.pisatest.mapper.QuestionDOMapper;
 import com.research.pisatest.mapper.UserAnswerDOMapper;
 import com.research.pisatest.mapper.UserDOMapper;
-import com.research.pisatest.pojo.*;
+import com.research.pisatest.pojo.QuestionDOExample;
+import com.research.pisatest.pojo.UserAnswerDOExample;
+import com.research.pisatest.pojo.UserDO;
+import com.research.pisatest.pojo.UserDOExample;
 import com.research.pisatest.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author zhongqilong
@@ -32,9 +32,6 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Autowired
     private UserAnswerDOMapper userAnswerDOMapper;
-
-    @Autowired
-    private IUserAnswerAssembler userAnswerAssembler;
 
     @Autowired
     private QuestionDOMapper questionDOMapper;
@@ -72,69 +69,6 @@ public class UserRepositoryImpl implements IUserRepository {
         UserDOExample example = new UserDOExample();
         example.createCriteria().andUserNameIsNotNull();
         return userDOMapper.selectByExample(example);
-    }
-
-    /**
-     * 查询所有题目
-     * @return
-     */
-    @Override
-    public List<UserAnswerDO> selectAllAnswerNo() {
-        UserAnswerDOExample example = new UserAnswerDOExample();
-        example.createCriteria().andIdIsNotNull();
-        return userAnswerDOMapper.selectByExample(example);
-    }
-
-    /**
-     * 查询所有用户的所有答题记录
-     * @return
-     */
-    @Override
-    public List<UserAnswer> selectAllUserAnswer() {
-        UserAnswerDOExample example = new UserAnswerDOExample();
-        example.createCriteria().andIdIsNotNull();
-        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
-        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
-    }
-
-    /**
-     * 根据用户名查询用户的所有答题记录
-     * @param userName
-     * @return
-     */
-    @Override
-    public List<UserAnswer> selectUserAnswerByUserName(String userName) {
-        UserAnswerDOExample example = new UserAnswerDOExample();
-        example.createCriteria().andUserNameEqualTo(userName);
-        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
-        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
-    }
-
-    /**
-     * 根据ith查询所有第i次答题记录
-     * @param ith
-     * @return
-     */
-    @Override
-    public List<UserAnswer> selectUserAnswerByIth(Integer ith) {
-        UserAnswerDOExample example = new UserAnswerDOExample();
-        example.createCriteria().andIthAnswerEqualTo(ith);
-        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
-        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
-    }
-
-    /**
-     * 根据用户名和ith查询用户的所有答题记录
-     * @param userName
-     * @param ith
-     * @return
-     */
-    @Override
-    public List<UserAnswer> selectUserAnswerByUserNameAndIth(String userName, Integer ith) {
-        UserAnswerDOExample example = new UserAnswerDOExample();
-        example.createCriteria().andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
-        List<UserAnswerDO> userAnswerDOS = userAnswerDOMapper.selectByExample(example);
-        return userAnswerAssembler.DOToUserAnswerList(userAnswerDOS);
     }
 
     /**

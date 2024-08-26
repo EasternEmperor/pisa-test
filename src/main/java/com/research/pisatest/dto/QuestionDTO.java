@@ -20,4 +20,6 @@ public class QuestionDTO {
     private Integer no;
 
     private String htmlName;
+
+    private String dataTable;
 }

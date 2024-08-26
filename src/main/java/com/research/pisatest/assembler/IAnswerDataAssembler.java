@@ -20,6 +20,8 @@ public interface IAnswerDataAssembler {
 
     AnswerDataDTO toDTO(AnswerData answerData);
 
+    AnswerData DTOToAnswerData(AnswerDataDTO answerDataDTO);
+
     List<AnswerDataDTO> toDTOList(List<AnswerData> answerDataList);
 
     AnswerData airConditionerDataDOToEntity(AirControllerDataDO airControllerDataDO);
@@ -29,4 +31,8 @@ public interface IAnswerDataAssembler {
     AnswerData ticketsSaleDataDOToEntity(TicketsSaleDataDO ticketsSaleDataDO);
 
     List<AnswerData> ticketsSaleDataDOListToEntityList(List<TicketsSaleDataDO> ticketsSaleDataDOList);
+
+    AirControllerDataDO toAirControllerDataDO(AnswerData answerData);
+
+    TicketsSaleDataDO toTicketsSaleDataDO(AnswerData answerData);
 }

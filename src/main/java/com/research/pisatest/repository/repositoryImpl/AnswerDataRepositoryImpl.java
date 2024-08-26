@@ -10,6 +10,7 @@ import com.research.pisatest.pojo.TicketsSaleDataDOExample;
 import com.research.pisatest.repository.IAnswerDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -82,5 +83,17 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
         TicketsSaleDataDOExample example = new TicketsSaleDataDOExample();
         example.createCriteria().andHtmlNameEqualTo(htmlName);
         return ticketsSaleDataDOMapper.selectByExample(example);
+    }
+
+    @Transactional
+    @Override
+    public void insertAirControllerData(AirControllerDataDO airControllerDataDO) {
+        airControllerDataDOMapper.insert(airControllerDataDO);
+    }
+
+    @Transactional
+    @Override
+    public void insertTicketsSaleData(TicketsSaleDataDO ticketsSaleDataDO) {
+        ticketsSaleDataDOMapper.insert(ticketsSaleDataDO);
     }
 }

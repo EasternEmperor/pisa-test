@@ -5,8 +5,10 @@ import com.research.pisatest.common.Constants;
 import com.research.pisatest.common.utils.RedisUtils;
 import com.research.pisatest.dto.UserDTO;
 import com.research.pisatest.entity.User;
+import com.research.pisatest.entity.UserAnswer;
 import com.research.pisatest.exception.TokenException;
 import com.research.pisatest.exception.UserNameFormatException;
+import com.research.pisatest.repository.IUserAnswerRepository;
 import com.research.pisatest.repository.IUserRepository;
 import com.research.pisatest.service.UserService;
 import io.micrometer.common.util.StringUtils;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +38,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private IUserAnswerRepository userAnswerRepository;
 
 
     /**
@@ -94,5 +100,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    @Override
+    public List<UserAnswer> getAnswerHistory(String userName) {
+        List<UserAnswer> userAnswerList = userAnswerRepository.selectUserAnswerByUserName(userName);
+        return userAnswerList;
+    }
 }

@@ -8,6 +8,7 @@ create table p_pt_user (
     unique key(user_name)
 );
 insert into p_pt_user(user_name, role) values('xiaoming20000101', 1);
+insert into p_pt_user(user_name, role) values('xiaogang20000909', 0);
 
 create table p_pt_question (
     id bigint(20) not null auto_increment,
@@ -19,6 +20,11 @@ create table p_pt_question (
 );
 insert into p_pt_question(no, html_name, data_table) values(-1, 'index.html', 'p_pt_air_controller_data');
 insert into p_pt_question(no, html_name, data_table) values(-1, 'hello.html', 'p_pt_tickets_sale_data');
+insert into p_pt_question(no, html_name, data_table) values(1, 'air_controller_t1', 'p_pt_air_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(2, 'air_controller_t2', 'p_pt_air_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(3, 'tickets_sale_t1', 'p_pt_tickets_sale_data');
+insert into p_pt_question(no, html_name, data_table) values(4, 'tickets_sale_t2', 'p_pt_tickets_sale_data');
+insert into p_pt_question(no, html_name, data_table) values(5, 'tickets_sale_t3', 'p_pt_tickets_sale_data');
 
 create table p_pt_user_answer (
     id bigint(20) not null auto_increment,
@@ -31,6 +37,7 @@ create table p_pt_user_answer (
 );
 insert into p_pt_user_answer(user_name) values('xiaoming20000101');
 insert into p_pt_user_answer(user_name, ith_answer) values('xiaoming20000101', 1);
+insert into p_pt_user_answer(user_name, ith_answer) values('xiaogang20000909', 1);
 
 create table p_pt_air_controller_data (
     id bigint(20) not null auto_increment,
@@ -50,6 +57,7 @@ create table p_pt_air_controller_data (
     key uk_user_name_ith_answer(user_name, ith_answer)
 );
 insert into p_pt_air_controller_data(html_name,user_name) values('index.html', 'xiaoming20000101');
+insert into p_pt_air_controller_data(html_name,user_name) values('index.html', 'xiaogang20000909');
 
 create table p_pt_tickets_sale_data (
     id bigint(20) not null auto_increment,
@@ -68,3 +76,4 @@ create table p_pt_tickets_sale_data (
     key uk_user_name_ith_answer(user_name, ith_answer)
 );
 insert into p_pt_tickets_sale_data(html_name, user_name) values('hello.html','xiaoming20000101');
+insert into p_pt_tickets_sale_data(html_name, user_name) values('hello.html','xiaogang20000909');

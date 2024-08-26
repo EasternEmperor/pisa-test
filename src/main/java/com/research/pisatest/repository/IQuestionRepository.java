@@ -10,11 +10,13 @@ import java.util.List;
  * @description
  */
 public interface IQuestionRepository {
-    public List<QuestionDO> getAllQuestions();
+    List<QuestionDO> getAllQuestions();
 
-    public Boolean deleteQuestion(QuestionDO questionDO);
+    Boolean deleteQuestion(QuestionDO questionDO);
 
-    public void modifyQuestionNo(List<QuestionDO> questionDOList);
+    void modifyQuestionNo(List<QuestionDO> questionDOList);
 
-    public List<QuestionDO> getAllQuestionName();
+    List<QuestionDO> getAllQuestionName();
+
+    QuestionDO getQuestionByNo(Integer questionNo);
 }

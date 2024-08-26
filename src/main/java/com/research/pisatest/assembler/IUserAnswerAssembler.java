@@ -19,9 +19,14 @@ public interface IUserAnswerAssembler {
 
     UserAnswer DOToUserAnswer(UserAnswerDO userAnswerDO);
 
+    UserAnswerDO toDO(UserAnswer userAnswer);
+
     List<UserAnswer> DOToUserAnswerList(List<UserAnswerDO> userAnswerDOList);
 
-    UserAnswerDTO ToUserAnswerDTO(UserAnswer userAnswer);
+    UserAnswer DTOToUserAnswer(UserAnswerDTO userAnswerDTO);
 
-    List<UserAnswerDTO> ToUserAnswerDTOList(List<UserAnswer> userAnswerList);
+    UserAnswerDTO toUserAnswerDTO(UserAnswer userAnswer);
+
+    List<UserAnswerDTO> toUserAnswerDTOList(List<UserAnswer> userAnswerList);
+
 }

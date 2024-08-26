@@ -69,12 +69,11 @@ public class QuestionBankServiceImpl implements QuestionBankService {
             }
             noMap.put(question.getNo(), true);
         }
-        // 保证题目序号是从1开始连续的
+        // 保证题目序号是从1开始连续的，且不能有重复题号
         List<Integer> noList = new ArrayList<>(noMap.keySet());
         noList.sort(Integer::compareTo);
-        if (noMap.containsKey(Constants.DELETE_QUESTION_NO)) {
-            noList.remove(Constants.DELETE_QUESTION_NO);
-        }
+        // 被删除的题目不计入题号
+        noList = noList.stream().filter(no -> no != Constants.DELETE_QUESTION_NO).toList();
         for (int i = 0; i < noList.size(); i++) {
             if (noList.get(i) != i + 1) {
                 throw new QuestionException("问题序号不连续");

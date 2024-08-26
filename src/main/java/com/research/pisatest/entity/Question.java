@@ -14,4 +14,6 @@ public class Question {
     private Integer no;
 
     private String htmlName;
+
+    private String dataTable;
 }

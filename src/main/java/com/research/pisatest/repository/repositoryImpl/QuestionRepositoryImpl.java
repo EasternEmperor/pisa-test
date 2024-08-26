@@ -68,10 +68,21 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
         }
     }
 
+    /**
+     * 获取所有题目名称
+     * @return
+     */
     @Override
     public List<QuestionDO> getAllQuestionName() {
         QuestionDOExample example = new QuestionDOExample();
         example.createCriteria().andIdIsNotNull();
         return questionDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public QuestionDO getQuestionByNo(Integer no) {
+        QuestionDOExample example = new QuestionDOExample();
+        example.createCriteria().andNoEqualTo(no);
+        return questionDOMapper.selectByExample(example).get(0);
     }
 }

@@ -23,8 +23,12 @@ public interface IAnswerDataRepository {
     List<TicketsSaleDataDO> getTicketsSaleData(String htmlName);
 
     List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, String userName);
-    
+
      List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, Integer ith);
 
     List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, String userName, Integer ith);
+
+    void insertAirControllerData(AirControllerDataDO airControllerDataDO);
+
+    void insertTicketsSaleData(TicketsSaleDataDO ticketsSaleDataDO);
 }
