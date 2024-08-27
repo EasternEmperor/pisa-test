@@ -45,7 +45,11 @@ public class UserRepositoryImpl implements IUserRepository {
     public User selectByUserName(String userName) {
         UserDOExample example = new UserDOExample();
         example.createCriteria().andUserNameEqualTo(userName);
-        UserDO userDO = userDOMapper.selectByExample(example).get(0);
+        List<UserDO> userDOs = userDOMapper.selectByExample(example);
+        if (userDOs.isEmpty()) {
+            return null;
+        }
+        UserDO userDO = userDOs.get(0);
         return userAssembler.UserDOToUser(userDO);
     }
 

@@ -7,6 +7,7 @@ import com.research.pisatest.pojo.UserAnswerDO;
 import com.research.pisatest.pojo.UserAnswerDOExample;
 import com.research.pisatest.repository.IUserAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * @date 2024/8/26 17:33
  * @description
  */
+@Repository
 public class UserAnswerRepositoryImpl implements IUserAnswerRepository {
     @Autowired
     private UserAnswerDOMapper userAnswerDOMapper;
