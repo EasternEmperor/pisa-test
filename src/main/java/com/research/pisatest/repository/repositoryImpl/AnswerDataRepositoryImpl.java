@@ -1,7 +1,8 @@
 package com.research.pisatest.repository.repositoryImpl;
 
+import com.research.pisatest.mapper.AirControllerDataDOExtMapper;
 import com.research.pisatest.mapper.AirControllerDataDOMapper;
-import com.research.pisatest.mapper.QuestionDOMapper;
+import com.research.pisatest.mapper.TicketsSaleDataDOExtMapper;
 import com.research.pisatest.mapper.TicketsSaleDataDOMapper;
 import com.research.pisatest.pojo.AirControllerDataDO;
 import com.research.pisatest.pojo.AirControllerDataDOExample;
@@ -26,7 +27,13 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     private AirControllerDataDOMapper airControllerDataDOMapper;
 
     @Autowired
+    private AirControllerDataDOExtMapper airControllerDataDOExtMapper;
+
+    @Autowired
     private TicketsSaleDataDOMapper ticketsSaleDataDOMapper;
+
+    @Autowired
+    private TicketsSaleDataDOExtMapper ticketsSaleDataDOExtMapper;
 
 
     @Override
@@ -87,13 +94,13 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
 
     @Transactional
     @Override
-    public void insertAirControllerData(AirControllerDataDO airControllerDataDO) {
-        airControllerDataDOMapper.insert(airControllerDataDO);
+    public void insertAirControllerData(List<AirControllerDataDO> airControllerDataDOs) {
+        airControllerDataDOExtMapper.batchInsert(airControllerDataDOs);
     }
 
     @Transactional
     @Override
-    public void insertTicketsSaleData(TicketsSaleDataDO ticketsSaleDataDO) {
-        ticketsSaleDataDOMapper.insert(ticketsSaleDataDO);
+    public void insertTicketsSaleData(List<TicketsSaleDataDO> ticketsSaleDataDOs) {
+        ticketsSaleDataDOExtMapper.batchInsert(ticketsSaleDataDOs);
     }
 }

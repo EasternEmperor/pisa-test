@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.research.pisatest.mapper.AirControllerDataDOExtMapper">
+    <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.AirControllerDataDO">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="html_name" jdbcType="VARCHAR" property="htmlName" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="ith_answer" jdbcType="INTEGER" property="ithAnswer" />
+        <result column="event" jdbcType="VARCHAR" property="event" />
+        <result column="event_type" jdbcType="VARCHAR" property="eventType" />
+        <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
+        <result column="event_number" jdbcType="INTEGER" property="eventNumber" />
+        <result column="top_setting" jdbcType="VARCHAR" property="topSetting" />
+        <result column="central_setting" jdbcType="VARCHAR" property="centralSetting" />
+        <result column="bottom_setting" jdbcType="VARCHAR" property="bottomSetting" />
+        <result column="temp_value" jdbcType="VARCHAR" property="tempValue" />
+        <result column="humid_value" jdbcType="VARCHAR" property="humidValue" />
+    </resultMap>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        insert into p_pt_air_controller_data
+        (html_name, user_name, ith_answer, event, event_type, event_start_time, event_number, top_setting, central_setting,
+        bottom_setting, temp_value, humid_value)
+        values
+        <foreach collection="airControllerDataDOList" item="item" separator=",">
+            (#{item.htmlName,jdbcType=VARCHAR}, #{item.userName,jdbcType=VARCHAR}, #{item.ithAnswer,jdbcType=INTEGER},
+            #{item.event,jdbcType=VARCHAR}, #{item.eventType,jdbcType=VARCHAR}, #{item.eventStartTime,jdbcType=VARCHAR},
+            #{item.eventNumber,jdbcType=INTEGER}, #{item.topSetting,jdbcType=VARCHAR}, #{item.centralSetting,jdbcType=VARCHAR},
+            #{item.bottomSetting,jdbcType=VARCHAR}, #{item.tempValue,jdbcType=VARCHAR}, #{item.humidValue,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

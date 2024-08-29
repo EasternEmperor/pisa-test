@@ -16,6 +16,9 @@ import com.research.pisatest.repository.IUserAnswerRepository;
 import com.research.pisatest.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 /**
  * @author zhongqilong
@@ -59,24 +62,27 @@ public class TestServiceImpl implements TestService {
 
     /**
      * 提交答案
-     * @param answerData
+     * @param answerDatas
      */
     @Override
-    public void submitAnswer(AnswerData answerData) {
+    public void submitAnswer(List<AnswerData> answerDatas) {
+        if (CollectionUtils.isEmpty(answerDatas)) {
+            throw new TestException("提交的答案为空！");
+        }
         // 获取该题目答题数据表名
         QuestionDOExample example = new QuestionDOExample();
-        example.createCriteria().andHtmlNameEqualTo(answerData.getHtmlName());
+        example.createCriteria().andHtmlNameEqualTo(answerDatas.get(0).getHtmlName());
         String tableName = questionDOMapper.selectByExample(example).get(0).getDataTable();
         DataTableEnum dataTableEnum = DataTableEnum.getEnumByTableName(tableName);
         // 插入答题数据
         switch (dataTableEnum) {
             case AIR_CONDITIONER_DATA -> {
-                AirControllerDataDO airControllerDataDO = answerDataAssembler.toAirControllerDataDO(answerData);
-                answerDataRepository.insertAirControllerData(airControllerDataDO);
+                List<AirControllerDataDO> airControllerDataDOs = answerDataAssembler.toAirControllerDataDOList(answerDatas);
+                answerDataRepository.insertAirControllerData(airControllerDataDOs);
             }
             case TICKETS_SALE_DATA -> {
-                TicketsSaleDataDO ticketSaleDataDO = answerDataAssembler.toTicketsSaleDataDO(answerData);
-                answerDataRepository.insertTicketsSaleData(ticketSaleDataDO);
+                List<TicketsSaleDataDO> ticketSaleDataDOs = answerDataAssembler.toTicketsSaleDataDOList(answerDatas);
+                answerDataRepository.insertTicketsSaleData(ticketSaleDataDOs);
             }
             default -> throw new TestException("题目错误！");
         }

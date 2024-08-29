@@ -16,6 +16,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author zhongqilong
  * @date 2024/8/22 21:34
@@ -53,10 +55,10 @@ public class TestController {
     }
 
     @PostMapping("/submitAnswer")
-    public Result submitAnswer(@RequestBody AnswerDataDTO answerDataDTO){
+    public Result submitAnswer(@RequestBody List<AnswerDataDTO> answerDataDTOs){
         try {
-            AnswerData answerData = answerDataAssembler.DTOToAnswerData(answerDataDTO);
-            testService.submitAnswer(answerData);
+            List<AnswerData> answerDatas = answerDataAssembler.DTOListToAnswerDataList(answerDataDTOs);
+            testService.submitAnswer(answerDatas);
             return Result.success("提交答案成功");
         } catch (Exception e) {
             return Result.error(Constants.ERROR_CODE, e.getMessage());

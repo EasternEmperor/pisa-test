@@ -4,6 +4,8 @@ import com.research.pisatest.entity.AnswerData;
 import com.research.pisatest.entity.Question;
 import com.research.pisatest.entity.UserAnswer;
 
+import java.util.List;
+
 /**
  * @author zhongqilong
  * @date 2024/8/22 21:37
@@ -13,7 +15,7 @@ public interface TestService {
 
     Question getQuestion(Integer no);
 
-    void submitAnswer(AnswerData answerData);
+    void submitAnswer(List<AnswerData> answerDatas);
 
     void finishTest(UserAnswer userAnswer);
 }

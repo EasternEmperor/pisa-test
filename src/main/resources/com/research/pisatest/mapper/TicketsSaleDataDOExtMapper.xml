@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.research.pisatest.mapper.TicketsSaleDataDOExtMapper">
+    <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.TicketsSaleDataDO">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="html_name" jdbcType="VARCHAR" property="htmlName" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="ith_answer" jdbcType="INTEGER" property="ithAnswer" />
+        <result column="event_type" jdbcType="VARCHAR" property="eventType" />
+        <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
+        <result column="event_number" jdbcType="INTEGER" property="eventNumber" />
+        <result column="network" jdbcType="VARCHAR" property="network" />
+        <result column="fare_type" jdbcType="VARCHAR" property="fareType" />
+        <result column="ticket_type" jdbcType="VARCHAR" property="ticketType" />
+        <result column="number_trips" jdbcType="VARCHAR" property="numberTrips" />
+    </resultMap>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        insert into p_pt_air_controller_data
+        (html_name, user_name, ith_answer, event_type, event_start_time, event_number, network, fare_type,
+        ticket_type, number_trips)
+        values
+        <foreach collection="ticketsSaleDataDOList" item="item" separator=",">
+            (#{item.htmlName,jdbcType=VARCHAR}, #{item.userName,jdbcType=VARCHAR}, #{item.ithAnswer,jdbcType=INTEGER},
+             #{item.eventType,jdbcType=VARCHAR}, #{item.eventStartTime,jdbcType=VARCHAR},#{item.eventNumber,jdbcType=INTEGER},
+             #{item.network,jdbcType=VARCHAR}, #{item.fareType,jdbcType=VARCHAR},#{item.ticketType,jdbcType=VARCHAR},
+             #{item.numberTrips,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
