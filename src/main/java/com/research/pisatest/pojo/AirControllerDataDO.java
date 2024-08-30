@@ -29,6 +29,8 @@ public class AirControllerDataDO {
 
     private String humidValue;
 
+    private String diagramState;
+
     public Long getId() {
         return id;
     }
@@ -131,5 +133,13 @@ public class AirControllerDataDO {
 
     public void setHumidValue(String humidValue) {
         this.humidValue = humidValue == null ? null : humidValue.trim();
+    }
+
+    public String getDiagramState() {
+        return diagramState;
+    }
+
+    public void setDiagramState(String diagramState) {
+        this.diagramState = diagramState == null ? null : diagramState.trim();
     }
 }

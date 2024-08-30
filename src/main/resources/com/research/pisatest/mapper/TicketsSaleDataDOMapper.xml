@@ -6,6 +6,7 @@
     <result column="html_name" jdbcType="VARCHAR" property="htmlName" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="ith_answer" jdbcType="INTEGER" property="ithAnswer" />
+    <result column="event" jdbcType="VARCHAR" property="event" />
     <result column="event_type" jdbcType="VARCHAR" property="eventType" />
     <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
     <result column="event_number" jdbcType="INTEGER" property="eventNumber" />
@@ -73,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, html_name, user_name, ith_answer, event_type, event_start_time, event_number, 
+    id, html_name, user_name, ith_answer, event, event_type, event_start_time, event_number, 
     network, fare_type, ticket_type, number_trips
   </sql>
   <select id="selectByExample" parameterType="com.research.pisatest.pojo.TicketsSaleDataDOExample" resultMap="BaseResultMap">
@@ -106,13 +107,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into p_pt_tickets_sale_data (html_name, user_name, ith_answer, 
-      event_type, event_start_time, event_number, 
-      network, fare_type, ticket_type, 
-      number_trips)
+      event, event_type, event_start_time, 
+      event_number, network, fare_type, 
+      ticket_type, number_trips)
     values (#{htmlName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{ithAnswer,jdbcType=INTEGER}, 
-      #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP}, #{eventNumber,jdbcType=INTEGER}, 
-      #{network,jdbcType=VARCHAR}, #{fareType,jdbcType=VARCHAR}, #{ticketType,jdbcType=VARCHAR}, 
-      #{numberTrips,jdbcType=VARCHAR})
+      #{event,jdbcType=VARCHAR}, #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP}, 
+      #{eventNumber,jdbcType=INTEGER}, #{network,jdbcType=VARCHAR}, #{fareType,jdbcType=VARCHAR}, 
+      #{ticketType,jdbcType=VARCHAR}, #{numberTrips,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.research.pisatest.pojo.TicketsSaleDataDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -128,6 +129,9 @@
       </if>
       <if test="ithAnswer != null">
         ith_answer,
+      </if>
+      <if test="event != null">
+        event,
       </if>
       <if test="eventType != null">
         event_type,
@@ -160,6 +164,9 @@
       </if>
       <if test="ithAnswer != null">
         #{ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="event != null">
+        #{event,jdbcType=VARCHAR},
       </if>
       <if test="eventType != null">
         #{eventType,jdbcType=VARCHAR},
@@ -205,6 +212,9 @@
       <if test="record.ithAnswer != null">
         ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
       </if>
+      <if test="record.event != null">
+        event = #{record.event,jdbcType=VARCHAR},
+      </if>
       <if test="record.eventType != null">
         event_type = #{record.eventType,jdbcType=VARCHAR},
       </if>
@@ -237,6 +247,7 @@
       html_name = #{record.htmlName,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
+      event = #{record.event,jdbcType=VARCHAR},
       event_type = #{record.eventType,jdbcType=VARCHAR},
       event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
       event_number = #{record.eventNumber,jdbcType=INTEGER},
@@ -259,6 +270,9 @@
       </if>
       <if test="ithAnswer != null">
         ith_answer = #{ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="event != null">
+        event = #{event,jdbcType=VARCHAR},
       </if>
       <if test="eventType != null">
         event_type = #{eventType,jdbcType=VARCHAR},
@@ -289,6 +303,7 @@
     set html_name = #{htmlName,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       ith_answer = #{ithAnswer,jdbcType=INTEGER},
+      event = #{event,jdbcType=VARCHAR},
       event_type = #{eventType,jdbcType=VARCHAR},
       event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
       event_number = #{eventNumber,jdbcType=INTEGER},

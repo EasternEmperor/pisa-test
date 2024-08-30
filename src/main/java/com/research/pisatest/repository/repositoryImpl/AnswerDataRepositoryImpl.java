@@ -94,13 +94,23 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
 
     @Transactional
     @Override
-    public void insertAirControllerData(List<AirControllerDataDO> airControllerDataDOs) {
+    public void batchInsertAirControllerData(List<AirControllerDataDO> airControllerDataDOs) {
         airControllerDataDOExtMapper.batchInsert(airControllerDataDOs);
+    }
+
+    @Override
+    public void insertAirControllerData(AirControllerDataDO airControllerDataDO) {
+        airControllerDataDOMapper.insert(airControllerDataDO);
+    }
+
+    @Override
+    public void insertTicketsSaleData(TicketsSaleDataDO ticketsSaleDataDO) {
+        ticketsSaleDataDOMapper.insert(ticketsSaleDataDO);
     }
 
     @Transactional
     @Override
-    public void insertTicketsSaleData(List<TicketsSaleDataDO> ticketsSaleDataDOs) {
+    public void batchInsertTicketsSaleData(List<TicketsSaleDataDO> ticketsSaleDataDOs) {
         ticketsSaleDataDOExtMapper.batchInsert(ticketsSaleDataDOs);
     }
 }

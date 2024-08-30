@@ -11,6 +11,8 @@ public class TicketsSaleDataDO {
 
     private Integer ithAnswer;
 
+    private String event;
+
     private String eventType;
 
     private Date eventStartTime;
@@ -55,6 +57,14 @@ public class TicketsSaleDataDO {
 
     public void setIthAnswer(Integer ithAnswer) {
         this.ithAnswer = ithAnswer;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event == null ? null : event.trim();
     }
 
     public String getEventType() {

@@ -43,6 +43,8 @@ public class AnswerDataDTO {
 
     private String humidValue;
 
+    private String diagramState;
+
     private String network;
 
     private String fareType;

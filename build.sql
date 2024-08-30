@@ -53,6 +53,7 @@ create table p_pt_air_controller_data (
     bottom_setting varchar(10) not null default 'NULL' comment 'bottom control设置的大小',
     temp_value varchar(100) not null default 'NULL' comment '温度大小',
     humid_value varchar(10) not null default 'NULL' comment '湿度大小',
+    diagram_state varchar(100) not null default 'NULL' comment '用户答案'
     primary key(id),
     key uk_user_name_ith_answer(user_name, ith_answer)
 );

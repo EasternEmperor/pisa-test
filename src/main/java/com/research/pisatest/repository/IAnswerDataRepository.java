@@ -28,7 +28,11 @@ public interface IAnswerDataRepository {
 
     List<TicketsSaleDataDO> getTicketsSaleData(String htmlName, String userName, Integer ith);
 
-    void insertAirControllerData(List<AirControllerDataDO> airControllerDataDOs);
+    void batchInsertAirControllerData(List<AirControllerDataDO> airControllerDataDOs);
 
-    void insertTicketsSaleData(List<TicketsSaleDataDO> ticketsSaleDataDOs);
+    void insertAirControllerData(AirControllerDataDO airControllerDataDO);
+
+    void batchInsertTicketsSaleData(List<TicketsSaleDataDO> ticketsSaleDataDOs);
+
+    void insertTicketsSaleData(TicketsSaleDataDO ticketsSaleDataDO);
 }

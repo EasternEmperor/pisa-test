@@ -78,16 +78,44 @@ public class TestServiceImpl implements TestService {
         switch (dataTableEnum) {
             case AIR_CONDITIONER_DATA -> {
                 List<AirControllerDataDO> airControllerDataDOs = answerDataAssembler.toAirControllerDataDOList(answerDatas);
-                answerDataRepository.insertAirControllerData(airControllerDataDOs);
+                answerDataRepository.batchInsertAirControllerData(airControllerDataDOs);
             }
             case TICKETS_SALE_DATA -> {
                 List<TicketsSaleDataDO> ticketSaleDataDOs = answerDataAssembler.toTicketsSaleDataDOList(answerDatas);
-                answerDataRepository.insertTicketsSaleData(ticketSaleDataDOs);
+                answerDataRepository.batchInsertTicketsSaleData(ticketSaleDataDOs);
             }
             default -> throw new TestException("题目错误！");
         }
     }
 
+    @Override
+    public void exploreData(AnswerData answerData) {
+        if (answerData == null) {
+            throw new TestException("提交的答案为空！");
+        }
+        // 获取改题目答题数据表名
+        QuestionDOExample example = new QuestionDOExample();
+        example.createCriteria().andHtmlNameEqualTo(answerData.getHtmlName());
+        String tableName = questionDOMapper.selectByExample(example).get(0).getDataTable();
+        DataTableEnum dataTableEnum = DataTableEnum.getEnumByTableName(tableName);
+        // 查询数据
+        switch (dataTableEnum) {
+            case AIR_CONDITIONER_DATA -> {
+                AirControllerDataDO airControllerDataDO = answerDataAssembler.toAirControllerDataDO(answerData);
+                answerDataRepository.insertAirControllerData(airControllerDataDO);
+            }
+            case TICKETS_SALE_DATA -> {
+                TicketsSaleDataDO ticketsSaleDataDO = answerDataAssembler.toTicketsSaleDataDO(answerData);
+                answerDataRepository.insertTicketsSaleData(ticketsSaleDataDO);
+            }
+            default -> throw new TestException("题目错误！");
+        }
+    }
+
+    /**
+     * 完成测试
+     * @param userAnswer
+     */
     @Override
     public void finishTest(UserAnswer userAnswer) {
         UserAnswerDO userAnswerDO = userAnswerAssembler.toDO(userAnswer);

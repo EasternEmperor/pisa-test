@@ -365,6 +365,76 @@ public class TicketsSaleDataDOExample {
             return (Criteria) this;
         }
 
+        public Criteria andEventIsNull() {
+            addCriterion("event is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventIsNotNull() {
+            addCriterion("event is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventEqualTo(String value) {
+            addCriterion("event =", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventNotEqualTo(String value) {
+            addCriterion("event <>", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventGreaterThan(String value) {
+            addCriterion("event >", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventGreaterThanOrEqualTo(String value) {
+            addCriterion("event >=", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventLessThan(String value) {
+            addCriterion("event <", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventLessThanOrEqualTo(String value) {
+            addCriterion("event <=", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventLike(String value) {
+            addCriterion("event like", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventNotLike(String value) {
+            addCriterion("event not like", value, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventIn(List<String> values) {
+            addCriterion("event in", values, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventNotIn(List<String> values) {
+            addCriterion("event not in", values, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventBetween(String value1, String value2) {
+            addCriterion("event between", value1, value2, "event");
+            return (Criteria) this;
+        }
+
+        public Criteria andEventNotBetween(String value1, String value2) {
+            addCriterion("event not between", value1, value2, "event");
+            return (Criteria) this;
+        }
+
         public Criteria andEventTypeIsNull() {
             addCriterion("event_type is null");
             return (Criteria) this;

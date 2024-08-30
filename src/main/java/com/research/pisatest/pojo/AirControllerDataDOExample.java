@@ -974,6 +974,76 @@ public class AirControllerDataDOExample {
             addCriterion("humid_value not between", value1, value2, "humidValue");
             return (Criteria) this;
         }
+
+        public Criteria andDiagramStateIsNull() {
+            addCriterion("diagram_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateIsNotNull() {
+            addCriterion("diagram_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateEqualTo(String value) {
+            addCriterion("diagram_state =", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateNotEqualTo(String value) {
+            addCriterion("diagram_state <>", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateGreaterThan(String value) {
+            addCriterion("diagram_state >", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateGreaterThanOrEqualTo(String value) {
+            addCriterion("diagram_state >=", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateLessThan(String value) {
+            addCriterion("diagram_state <", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateLessThanOrEqualTo(String value) {
+            addCriterion("diagram_state <=", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateLike(String value) {
+            addCriterion("diagram_state like", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateNotLike(String value) {
+            addCriterion("diagram_state not like", value, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateIn(List<String> values) {
+            addCriterion("diagram_state in", values, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateNotIn(List<String> values) {
+            addCriterion("diagram_state not in", values, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateBetween(String value1, String value2) {
+            addCriterion("diagram_state between", value1, value2, "diagramState");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiagramStateNotBetween(String value1, String value2) {
+            addCriterion("diagram_state not between", value1, value2, "diagramState");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

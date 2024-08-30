@@ -54,6 +54,17 @@ public class TestController {
         }
     }
 
+    @PostMapping("/exploreData")
+    public Result exploreData(@RequestBody AnswerDataDTO answerDataDTO){
+        try {
+            AnswerData answerData = answerDataAssembler.DTOToAnswerData(answerDataDTO);
+            testService.exploreData(answerData);
+            return Result.success("探索数据提交成功");
+        } catch (Exception e) {
+            return Result.error(Constants.ERROR_CODE, e.getMessage());
+        }
+    }
+
     @PostMapping("/submitAnswer")
     public Result submitAnswer(@RequestBody List<AnswerDataDTO> answerDataDTOs){
         try {

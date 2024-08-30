@@ -17,5 +17,7 @@ public interface TestService {
 
     void submitAnswer(List<AnswerData> answerDatas);
 
+    void exploreData(AnswerData answerData);
+
     void finishTest(UserAnswer userAnswer);
 }
