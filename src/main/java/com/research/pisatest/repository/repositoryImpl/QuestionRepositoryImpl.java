@@ -83,6 +83,10 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
     public QuestionDO getQuestionByNo(Integer no) {
         QuestionDOExample example = new QuestionDOExample();
         example.createCriteria().andNoEqualTo(no);
-        return questionDOMapper.selectByExample(example).get(0);
+        List<QuestionDO> questionDOS = questionDOMapper.selectByExample(example);
+        if (questionDOS.isEmpty()) {
+            return null;
+        }
+        return questionDOS.get(0);
     }
 }

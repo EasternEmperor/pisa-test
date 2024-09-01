@@ -57,6 +57,10 @@ public class TestServiceImpl implements TestService {
     @Override
     public Question getQuestion(Integer no) {
         QuestionDO questionDO = questionRepository.getQuestionByNo(no);
+        if (questionDO == null) {
+            questionDO = new QuestionDO();
+            questionDO.setHtmlName("finished");
+        }
         return questionAssembler.DOToQuestion(questionDO);
     }
 

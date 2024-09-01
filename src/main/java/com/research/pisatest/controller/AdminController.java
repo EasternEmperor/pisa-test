@@ -4,16 +4,17 @@ import com.research.pisatest.common.Constants;
 import com.research.pisatest.common.utils.Result;
 import com.research.pisatest.dto.UserAnswerDTO;
 import com.research.pisatest.entity.DescInfo;
+import com.research.pisatest.query.DownloadInfo;
+import com.research.pisatest.query.UserAnswerQuery;
 import com.research.pisatest.service.AdminService;
-import jakarta.servlet.http.HttpServletRequest;
+import com.research.pisatest.service.DownloadService;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Set;
+import java.io.OutputStream;
+import java.util.*;
 
 /**
  * @author zhongqilong
@@ -25,6 +26,9 @@ import java.util.Set;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private DownloadService downloadService;
 
     @GetMapping("/getDescInfo")
     public Result getDescInfo() {
@@ -56,11 +60,19 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/getUserAnswerList")
-    public Result getUserAnswerList(HttpServletRequest request, @Valid String userName, @Valid Integer ith) {
+    @PostMapping("/getUserAnswerList")
+    public Result getUserAnswerList(HttpServletResponse response, @RequestBody UserAnswerQuery userAnswerQuery) {
         try {
-            List<UserAnswerDTO> userAnswerDTOList = adminService.getUserAnswerList(userName, ith);
-            return Result.success(userAnswerDTOList, "获取所有用户答题信息成功");
+            List<UserAnswerDTO> userAnswerDTOList = adminService.getUserAnswerList(userAnswerQuery.getUserName(), userAnswerQuery.getIth());
+            // 查询请求
+            if (userAnswerQuery.getDownloadInfo() == null) {
+                return Result.success(userAnswerDTOList, "获取所有用户答题信息成功");
+            } else {
+                // 下载请求
+                List<Object> datas = new ArrayList<>(userAnswerDTOList);
+                downloadService.dataExport(response, datas, userAnswerQuery.getDownloadInfo());
+                return Result.success(null, "下载成功");
+            }
         } catch (Exception e) {
             return Result.error(Constants.ERROR_CODE, e.getMessage());
         }

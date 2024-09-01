@@ -9,6 +9,7 @@ import com.research.pisatest.exception.PisaTestException;
 import com.research.pisatest.exception.QuestionException;
 import com.research.pisatest.mapper.QuestionDOMapper;
 import com.research.pisatest.pojo.AirControllerDataDO;
+import com.research.pisatest.pojo.QuestionDO;
 import com.research.pisatest.pojo.QuestionDOExample;
 import com.research.pisatest.pojo.TicketsSaleDataDO;
 import com.research.pisatest.repository.IAnswerDataRepository;
@@ -44,7 +45,11 @@ public class AnswerDataServiceImpl implements AnswerDataService {
         // 获取该题目答题数据表名
         QuestionDOExample example = new QuestionDOExample();
         example.createCriteria().andHtmlNameEqualTo(htmlName);
-        String tableName = questionDOMapper.selectByExample(example).get(0).getDataTable();
+        List<QuestionDO> questionDOList = questionDOMapper.selectByExample(example);
+        if (questionDOList.isEmpty()) {
+            throw new QuestionException("没有找到题目：" + htmlName);
+        }
+        String tableName = questionDOList.get(0).getDataTable();
         // 查询该题目答题数据
         DataTableEnum dataTableEnum = DataTableEnum.getEnumByTableName(tableName);
         List<AnswerData> answerDataList = switch (dataTableEnum) {
