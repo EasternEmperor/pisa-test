@@ -39,17 +39,19 @@ public class AnswerData {
 
     private String bottomSetting;
 
+    // 空调
     private String tempValue;
-
     private String humidValue;
 
-    private String diagramState;
-
+    // 铁路购票
     private String network;
-
     private String fareType;
-
     private String ticketType;
-
     private String numberTrips;
+
+    // 喂猫器
+    private String foodValue;
+    private String waterValue;
+
+    private String diagramState;
 }

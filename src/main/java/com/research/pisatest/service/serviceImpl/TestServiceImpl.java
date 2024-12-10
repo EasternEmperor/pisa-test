@@ -88,6 +88,10 @@ public class TestServiceImpl implements TestService {
                 List<TicketsSaleDataDO> ticketSaleDataDOs = answerDataAssembler.toTicketsSaleDataDOList(answerDatas);
                 answerDataRepository.batchInsertTicketsSaleData(ticketSaleDataDOs);
             }
+            case CAT_FEED_DATA -> {
+                List<CatFeedDataDO> catFeedDataDOs = answerDataAssembler.toCatFeedDataDOList(answerDatas);
+                answerDataRepository.batchInsertCatFeedData(catFeedDataDOs);
+            }
             default -> throw new TestException("题目错误！");
         }
     }
@@ -111,6 +115,10 @@ public class TestServiceImpl implements TestService {
             case TICKETS_SALE_DATA -> {
                 TicketsSaleDataDO ticketsSaleDataDO = answerDataAssembler.toTicketsSaleDataDO(answerData);
                 answerDataRepository.insertTicketsSaleData(ticketsSaleDataDO);
+            }
+            case CAT_FEED_DATA -> {
+                CatFeedDataDO catFeedDataDO = answerDataAssembler.toCatFeedDataDO(answerData);
+                answerDataRepository.insertCatFeedData(catFeedDataDO);
             }
             default -> throw new TestException("题目错误！");
         }

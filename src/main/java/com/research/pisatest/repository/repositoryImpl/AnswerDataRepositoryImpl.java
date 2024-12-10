@@ -1,13 +1,7 @@
 package com.research.pisatest.repository.repositoryImpl;
 
-import com.research.pisatest.mapper.AirControllerDataDOExtMapper;
-import com.research.pisatest.mapper.AirControllerDataDOMapper;
-import com.research.pisatest.mapper.TicketsSaleDataDOExtMapper;
-import com.research.pisatest.mapper.TicketsSaleDataDOMapper;
-import com.research.pisatest.pojo.AirControllerDataDO;
-import com.research.pisatest.pojo.AirControllerDataDOExample;
-import com.research.pisatest.pojo.TicketsSaleDataDO;
-import com.research.pisatest.pojo.TicketsSaleDataDOExample;
+import com.research.pisatest.mapper.*;
+import com.research.pisatest.pojo.*;
 import com.research.pisatest.repository.IAnswerDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,18 +16,23 @@ import java.util.List;
  */
 @Repository
 public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
-
+    // 空调
     @Autowired
     private AirControllerDataDOMapper airControllerDataDOMapper;
-
     @Autowired
     private AirControllerDataDOExtMapper airControllerDataDOExtMapper;
 
+    // 购票
     @Autowired
     private TicketsSaleDataDOMapper ticketsSaleDataDOMapper;
-
     @Autowired
     private TicketsSaleDataDOExtMapper ticketsSaleDataDOExtMapper;
+
+    // 猫粮
+    @Autowired
+    private CatFeedDataDOMapper catFeedDataDOMapper;
+    @Autowired
+    private CatFeedDataDOExtMapper catFeedDataDOExtMapper;
 
 
     @Override
@@ -112,5 +111,43 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     @Override
     public void batchInsertTicketsSaleData(List<TicketsSaleDataDO> ticketsSaleDataDOs) {
         ticketsSaleDataDOExtMapper.batchInsert(ticketsSaleDataDOs);
+    }
+
+    @Override
+    public List<CatFeedDataDO> getCatFeedData(String htmlName) {
+        CatFeedDataDOExample example = new CatFeedDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName);
+        return catFeedDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<CatFeedDataDO> getCatFeedData(String htmlName, String userName) {
+        CatFeedDataDOExample example = new CatFeedDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName);
+        return catFeedDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<CatFeedDataDO> getCatFeedData(String htmlName, Integer ith) {
+        CatFeedDataDOExample example = new CatFeedDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andIthAnswerEqualTo(ith);
+        return catFeedDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<CatFeedDataDO> getCatFeedData(String htmlName, String userName, Integer ith) {
+        CatFeedDataDOExample example = new CatFeedDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        return catFeedDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public void batchInsertCatFeedData(List<CatFeedDataDO> catFeedDataDOs) {
+        catFeedDataDOExtMapper.batchInsert(catFeedDataDOs);
+    }
+
+    @Override
+    public void insertCatFeedData(CatFeedDataDO catFeedDataDO) {
+        catFeedDataDOMapper.insert(catFeedDataDO);
     }
 }

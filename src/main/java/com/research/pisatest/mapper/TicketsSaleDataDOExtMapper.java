@@ -1,6 +1,5 @@
 package com.research.pisatest.mapper;
 
-import com.research.pisatest.pojo.AirControllerDataDO;
 import com.research.pisatest.pojo.TicketsSaleDataDO;
 import org.apache.ibatis.annotations.Param;
 

@@ -96,13 +96,19 @@
 <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
 <!--        </table>-->
 
-        <table tableName="p_pt_air_controller_data" domainObjectName="AirControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+<!--        <table tableName="p_pt_air_controller_data" domainObjectName="AirControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            &lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
 
-        <table tableName="p_pt_tickets_sale_data" domainObjectName="TicketsSaleDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+<!--        <table tableName="p_pt_tickets_sale_data" domainObjectName="TicketsSaleDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            &lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+        <table tableName="p_pt_cat_feed_data" domainObjectName="CatFeedDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
             <property name="useActualColumnNames" value="false"/>
             <!-- 数据库表主键 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>

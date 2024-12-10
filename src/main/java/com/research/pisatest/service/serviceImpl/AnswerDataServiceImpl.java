@@ -8,10 +8,7 @@ import com.research.pisatest.exception.AnswerDataException;
 import com.research.pisatest.exception.PisaTestException;
 import com.research.pisatest.exception.QuestionException;
 import com.research.pisatest.mapper.QuestionDOMapper;
-import com.research.pisatest.pojo.AirControllerDataDO;
-import com.research.pisatest.pojo.QuestionDO;
-import com.research.pisatest.pojo.QuestionDOExample;
-import com.research.pisatest.pojo.TicketsSaleDataDO;
+import com.research.pisatest.pojo.*;
 import com.research.pisatest.repository.IAnswerDataRepository;
 import com.research.pisatest.service.AnswerDataService;
 import io.micrometer.common.util.StringUtils;
@@ -86,6 +83,23 @@ public class AnswerDataServiceImpl implements AnswerDataService {
                     }
                 }
                 yield answerDataAssembler.ticketsSaleDataDOListToEntityList(ticketsSaleDataDOList);
+            }
+            case CAT_FEED_DATA -> {
+                List<CatFeedDataDO> catFeedDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        catFeedDataDOList = answerDataRepository.getCatFeedData(htmlName);
+                    } else {
+                        catFeedDataDOList = answerDataRepository.getCatFeedData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        catFeedDataDOList = answerDataRepository.getCatFeedData(htmlName, userName);
+                    } else {
+                        catFeedDataDOList = answerDataRepository.getCatFeedData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.catFeedDataDOListToEntityList(catFeedDataDOList);
             }
             default -> throw new AnswerDataException("没有符合的题目：" + htmlName);
         };
