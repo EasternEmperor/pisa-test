@@ -120,6 +120,50 @@ public class TestServiceImpl implements TestService {
                 CatFeedDataDO catFeedDataDO = answerDataAssembler.toCatFeedDataDO(answerData);
                 answerDataRepository.insertCatFeedData(catFeedDataDO);
             }
+            case PROJECTION_CONTROLLER_DATA -> {
+                ProjectionControllerDataDO projectionControllerDataDO = answerDataAssembler.toProjectionControllerDataDO(answerData);
+                answerDataRepository.insertProjectionControllerData(projectionControllerDataDO);
+            }
+            case CAMERA_CONTROLLER_DATA -> {
+                CameraControllerDataDO cameraControllerDataDO = answerDataAssembler.toCameraControllerDataDO(answerData);
+                answerDataRepository.insertCameraControllerData(cameraControllerDataDO);
+            }
+            case WATER_DISPENSER_DATA -> {
+                WaterDispenserDataDO waterDispenserDataDO = answerDataAssembler.toWaterDispenserDataDO(answerData);
+                answerDataRepository.insertWaterDispenserData(waterDispenserDataDO);
+            }
+            case COFFEE_MACHINE_DATA -> {
+                CoffeeMachineDataDO coffeeMachineDataDO = answerDataAssembler.toCoffeeMachineDataDO(answerData);
+                answerDataRepository.insertCoffeeMachineData(coffeeMachineDataDO);
+            }
+            case PERFUME_MAKER_DATA -> {
+                PerfumeMakerDataDO perfumeMakerDataDO = answerDataAssembler.toPerfumeMakerDataDO(answerData);
+                answerDataRepository.insertPerfumeMakerData(perfumeMakerDataDO);
+            }
+            case FLOWER_GARDEN_DATA -> {
+                FlowerGardenDataDO flowerGardenDataDO = answerDataAssembler.toFlowerGardenDataDO(answerData);
+                answerDataRepository.insertFlowerGardenData(flowerGardenDataDO);
+            }
+            case VIDEO_PLAYER_DATA -> {
+                VideoPlayerDataDO videoPlayerDataDO = answerDataAssembler.toVideoPlayerDataDO(answerData);
+                answerDataRepository.insertVideoPlayerData(videoPlayerDataDO);
+            }
+            case FLASHLIGHT_DATA -> {
+                FlashlightDataDO flashlightDataDO = answerDataAssembler.toFlashlightDataDO(answerData);
+                answerDataRepository.insertFlashlightData(flashlightDataDO);
+            }
+            case RICE_COOKER_DATA -> {
+                RiceCookerDataDO riceCookerDataDO = answerDataAssembler.toRiceCookerDataDO(answerData);
+                answerDataRepository.insertRiceCookerData(riceCookerDataDO);
+            }
+            case FRUIT_TEA_DATA -> {
+                FruitTeaDataDO fruitTeaDataDO = answerDataAssembler.toFruitTeaDataDO(answerData);
+                answerDataRepository.insertFruitTeaData(fruitTeaDataDO);
+            }
+            case BIG_AIR_DATA -> {
+                BigAirControllerDataDO bigAirControllerDataDO = answerDataAssembler.toBigAirControllerDataDO(answerData);
+                answerDataRepository.insertBigAirControllerData(bigAirControllerDataDO);
+            }
             default -> throw new TestException("题目错误！");
         }
     }

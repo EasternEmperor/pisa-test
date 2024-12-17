@@ -101,6 +101,193 @@ public class AnswerDataServiceImpl implements AnswerDataService {
                 }
                 yield answerDataAssembler.catFeedDataDOListToEntityList(catFeedDataDOList);
             }
+            case BIG_AIR_DATA -> {
+                List<BigAirControllerDataDO> bigAirControllerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        bigAirControllerDataDOList = answerDataRepository.getBigAirControllerData(htmlName);
+                    } else {
+                        bigAirControllerDataDOList = answerDataRepository.getBigAirControllerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        bigAirControllerDataDOList = answerDataRepository.getBigAirControllerData(htmlName, userName);
+                    } else {
+                        bigAirControllerDataDOList = answerDataRepository.getBigAirControllerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.bigAirControllerDataDOListToEntityList(bigAirControllerDataDOList);
+            }
+            case FLASHLIGHT_DATA -> {
+                List<FlashlightDataDO> flashlightDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        flashlightDataDOList = answerDataRepository.getFlashlightData(htmlName);
+                    } else {
+                        flashlightDataDOList = answerDataRepository.getFlashlightData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        flashlightDataDOList = answerDataRepository.getFlashlightData(htmlName, userName);
+                    } else {
+                        flashlightDataDOList = answerDataRepository.getFlashlightData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.flashlightDataDOListToEntityList(flashlightDataDOList);
+            }
+            case FRUIT_TEA_DATA -> {
+                List<FruitTeaDataDO> fruitTeaDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        fruitTeaDataDOList = answerDataRepository.getFruitTeaData(htmlName);
+                    } else {
+                        fruitTeaDataDOList = answerDataRepository.getFruitTeaData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        fruitTeaDataDOList = answerDataRepository.getFruitTeaData(htmlName, userName);
+                    } else {
+                        fruitTeaDataDOList = answerDataRepository.getFruitTeaData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.fruitTeaDataDOListToEntityList(fruitTeaDataDOList);
+            }
+            case RICE_COOKER_DATA -> {
+                List<RiceCookerDataDO> riceCookerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        riceCookerDataDOList = answerDataRepository.getRiceCookerData(htmlName);
+                    } else {
+                        riceCookerDataDOList = answerDataRepository.getRiceCookerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        riceCookerDataDOList = answerDataRepository.getRiceCookerData(htmlName, userName);
+                    } else {
+                        riceCookerDataDOList = answerDataRepository.getRiceCookerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.riceCookerDataDOListToEntityList(riceCookerDataDOList);
+            }
+            case VIDEO_PLAYER_DATA -> {
+                List<VideoPlayerDataDO> videoPlayerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        videoPlayerDataDOList = answerDataRepository.getVideoPlayerData(htmlName);
+                    } else {
+                        videoPlayerDataDOList = answerDataRepository.getVideoPlayerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        videoPlayerDataDOList = answerDataRepository.getVideoPlayerData(htmlName, userName);
+                    } else {
+                        videoPlayerDataDOList = answerDataRepository.getVideoPlayerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.videoPlayerDataDOListToEntityList(videoPlayerDataDOList);
+            }
+            case FLOWER_GARDEN_DATA -> {
+                List<FlowerGardenDataDO> flowerGardenDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        flowerGardenDataDOList = answerDataRepository.getFlowerGardenData(htmlName);
+                    } else {
+                        flowerGardenDataDOList = answerDataRepository.getFlowerGardenData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        flowerGardenDataDOList = answerDataRepository.getFlowerGardenData(htmlName, userName);
+                    } else {
+                        flowerGardenDataDOList = answerDataRepository.getFlowerGardenData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.flowerGardenDataDOListToEntityList(flowerGardenDataDOList);
+            }
+            case PERFUME_MAKER_DATA -> {
+                List<PerfumeMakerDataDO> perfumeMakerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        perfumeMakerDataDOList = answerDataRepository.getPerfumeMakerData(htmlName);
+                    } else {
+                        perfumeMakerDataDOList = answerDataRepository.getPerfumeMakerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        perfumeMakerDataDOList = answerDataRepository.getPerfumeMakerData(htmlName, userName);
+                    } else {
+                        perfumeMakerDataDOList = answerDataRepository.getPerfumeMakerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.perfumeMakerDataDOListToEntityList(perfumeMakerDataDOList);
+            }
+            case COFFEE_MACHINE_DATA -> {
+                List<CoffeeMachineDataDO> coffeeMachineDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        coffeeMachineDataDOList = answerDataRepository.getCoffeeMachineData(htmlName);
+                    } else {
+                        coffeeMachineDataDOList = answerDataRepository.getCoffeeMachineData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        coffeeMachineDataDOList = answerDataRepository.getCoffeeMachineData(htmlName, userName);
+                    } else {
+                        coffeeMachineDataDOList = answerDataRepository.getCoffeeMachineData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.coffeeMachineDataDOListToEntityList(coffeeMachineDataDOList);
+            }
+            case WATER_DISPENSER_DATA -> {
+                List<WaterDispenserDataDO> waterDispenserDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        waterDispenserDataDOList = answerDataRepository.getWaterDispenserData(htmlName);
+                    } else {
+                        waterDispenserDataDOList = answerDataRepository.getWaterDispenserData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        waterDispenserDataDOList = answerDataRepository.getWaterDispenserData(htmlName, userName);
+                    } else {
+                        waterDispenserDataDOList = answerDataRepository.getWaterDispenserData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.waterDispenserDataDOListToEntityList(waterDispenserDataDOList);
+            }
+            case CAMERA_CONTROLLER_DATA -> {
+                List<CameraControllerDataDO> cameraControllerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        cameraControllerDataDOList = answerDataRepository.getCameraControllerData(htmlName);
+                    } else {
+                        cameraControllerDataDOList = answerDataRepository.getCameraControllerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        cameraControllerDataDOList = answerDataRepository.getCameraControllerData(htmlName, userName);
+                    } else {
+                        cameraControllerDataDOList = answerDataRepository.getCameraControllerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.cameraControllerDataDOListToEntityList(cameraControllerDataDOList);
+            }
+            case PROJECTION_CONTROLLER_DATA -> {
+                List<ProjectionControllerDataDO> projectionControllerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        projectionControllerDataDOList = answerDataRepository.getProjectionControllerData(htmlName);
+                    } else {
+                        projectionControllerDataDOList = answerDataRepository.getProjectionControllerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        projectionControllerDataDOList = answerDataRepository.getProjectionControllerData(htmlName, userName);
+                    } else {
+                        projectionControllerDataDOList = answerDataRepository.getProjectionControllerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.projectionControllerDataDOListToEntityList(projectionControllerDataDOList);
+            }
             default -> throw new AnswerDataException("没有符合的题目：" + htmlName);
         };
         // 设置每个AnswerData对象的表名属性为dataTableEnum的索引值

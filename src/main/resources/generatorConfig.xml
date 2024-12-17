@@ -108,11 +108,78 @@
 <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
 <!--        </table>-->
 
-        <table tableName="p_pt_cat_feed_data" domainObjectName="CatFeedDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+<!--        <table tableName="p_pt_cat_feed_data" domainObjectName="CatFeedDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--            &lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+        <table tableName="p_pt_camera_controller_data" domainObjectName="CameraControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
             <property name="useActualColumnNames" value="false"/>
             <!-- 数据库表主键 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+
+        <table tableName="p_pt_fruit_tea_data" domainObjectName="FruitTeaDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_coffee_machine_data" domainObjectName="CoffeeMachineDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_rice_cooker_data" domainObjectName="RiceCookerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_flashlight_data" domainObjectName="FlashlightDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_flower_garden_data" domainObjectName="FlowerGardenDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_big_air_controller_data" domainObjectName="BigAirControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_video_player_data" domainObjectName="VideoPlayerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_water_dispenser_data" domainObjectName="WaterDispenserDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_projection_controller_data" domainObjectName="ProjectionControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_perfume_maker_data" domainObjectName="PerfumeMakerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
     </context>
 
 </generatorConfiguration>
