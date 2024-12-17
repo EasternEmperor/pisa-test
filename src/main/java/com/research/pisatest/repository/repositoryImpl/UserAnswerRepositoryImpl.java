@@ -37,6 +37,18 @@ public class UserAnswerRepositoryImpl implements IUserAnswerRepository {
     }
 
     /**
+     * 根据用户名查询答题次数
+     * @param userName
+     * @return
+     */
+    @Override
+    public List<UserAnswerDO> selectAnswerNo(String userName) {
+        UserAnswerDOExample example = new UserAnswerDOExample();
+        example.createCriteria().andUserNameEqualTo(userName);
+        return userAnswerDOMapper.selectByExample(example);
+    }
+
+    /**
      * 查询所有用户的所有答题记录
      * @return
      */

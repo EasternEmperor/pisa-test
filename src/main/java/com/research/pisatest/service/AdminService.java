@@ -17,5 +17,5 @@ public interface AdminService {
 
     List<String> getAllUserName();
 
-    Set<String> getAllAnswerNo();
+    Set<String> getUserAnswerNo(String userName);
 }

@@ -51,9 +51,9 @@ public class AdminController {
     }
 
     @GetMapping("/getAllAnswerNo")
-    public Result getAllAnswerNo() {
+    public Result getAllAnswerNo(String userName) {
         try {
-            Set<String> userAnswerIthList = adminService.getAllAnswerNo();
+            Set<String> userAnswerIthList = adminService.getUserAnswerNo(userName);
             return Result.success(userAnswerIthList, "获取所有问题编号成功");
         } catch (Exception e) {
             return Result.error(Constants.ERROR_CODE, e.getMessage());

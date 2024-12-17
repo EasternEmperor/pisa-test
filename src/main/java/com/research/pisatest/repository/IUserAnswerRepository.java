@@ -13,6 +13,8 @@ import java.util.List;
 public interface IUserAnswerRepository {
     List<UserAnswerDO> selectAllAnswerNo();
 
+    List<UserAnswerDO> selectAnswerNo(String userName);
+
     List<UserAnswer> selectAllUserAnswer();
 
     List<UserAnswer> selectUserAnswerByUserName(String userName);

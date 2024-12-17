@@ -15,6 +15,7 @@ import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -52,9 +53,14 @@ public class AdminServiceImpl implements AdminService {
      * @return
      */
     @Override
-    public Set<String> getAllAnswerNo() {
-        List<UserAnswerDO> userAnswerDOList = userAnswerRepository.selectAllAnswerNo();
-        Set<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer())).collect(Collectors.toSet());
+    public Set<String> getUserAnswerNo(String userName) {
+        List<UserAnswerDO> userAnswerDOList = new ArrayList<>();
+        if (Constants.ALL.equals(userName)) {
+            userAnswerDOList = userAnswerRepository.selectAllAnswerNo();
+        } else {
+            userAnswerDOList = userAnswerRepository.selectAnswerNo(userName);
+        }
+        Set<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer() + 1)).collect(Collectors.toSet());
         res.add(Constants.ALL);
         return res;
     }
