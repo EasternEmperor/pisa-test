@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -45,6 +46,8 @@ public class AdminInterceptor implements HandlerInterceptor {
         if (StringUtils.isNotBlank(token)) {
             if (redisUtils.containsKey(token)) {
                 String role = (String) redisUtils.getHashValue(token, "role");
+                // 重置token的过期时间
+                redisUtils.resetExpiry(token, Constants.TTL, TimeUnit.DAYS);
                 if (Constants.ADMIN.equals(role)) {
                     return true;
                 }

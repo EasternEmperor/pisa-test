@@ -61,6 +61,11 @@ public class RedisUtils {
         redisTemplate.expire(key, timeout, timeUnit);
     }
 
+    // 作用：重置redis中指定key的过期时间
+    public void resetExpiry(String key, long timeout, TimeUnit timeUnit) {
+        redisTemplate.expire(key, timeout, timeUnit);
+    }
+
     // 作用: 从 Redis 中删除指定键及其对应的值
     public void deleteValue(String key) {
         redisTemplate.delete(key);
