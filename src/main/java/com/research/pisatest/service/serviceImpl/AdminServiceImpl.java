@@ -60,7 +60,7 @@ public class AdminServiceImpl implements AdminService {
         } else {
             userAnswerDOList = userAnswerRepository.selectAnswerNo(userName);
         }
-        Set<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer() + 1)).collect(Collectors.toSet());
+        Set<String> res =  userAnswerDOList.stream().map(userAnswerDO -> String.valueOf(userAnswerDO.getIthAnswer())).collect(Collectors.toSet());
         res.add(Constants.ALL);
         return res;
     }
