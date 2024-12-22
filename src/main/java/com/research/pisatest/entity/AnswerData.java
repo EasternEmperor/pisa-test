@@ -39,6 +39,8 @@ public class AnswerData {
 
     private String bottomSetting;
 
+    private String lastSetting;
+
     // 空调
     private String tempValue;
     private String humidValue;
