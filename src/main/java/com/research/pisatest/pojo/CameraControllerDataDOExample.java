@@ -1,7 +1,7 @@
 package com.research.pisatest.pojo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class CameraControllerDataDOExample {
@@ -515,52 +515,52 @@ public class CameraControllerDataDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeEqualTo(Date value) {
+        public Criteria andEventStartTimeEqualTo(LocalDateTime value) {
             addCriterion("event_start_time =", value, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeNotEqualTo(Date value) {
+        public Criteria andEventStartTimeNotEqualTo(LocalDateTime value) {
             addCriterion("event_start_time <>", value, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeGreaterThan(Date value) {
+        public Criteria andEventStartTimeGreaterThan(LocalDateTime value) {
             addCriterion("event_start_time >", value, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andEventStartTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("event_start_time >=", value, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeLessThan(Date value) {
+        public Criteria andEventStartTimeLessThan(LocalDateTime value) {
             addCriterion("event_start_time <", value, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeLessThanOrEqualTo(Date value) {
+        public Criteria andEventStartTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("event_start_time <=", value, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeIn(List<Date> values) {
+        public Criteria andEventStartTimeIn(List<LocalDateTime> values) {
             addCriterion("event_start_time in", values, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeNotIn(List<Date> values) {
+        public Criteria andEventStartTimeNotIn(List<LocalDateTime> values) {
             addCriterion("event_start_time not in", values, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeBetween(Date value1, Date value2) {
+        public Criteria andEventStartTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("event_start_time between", value1, value2, "eventStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andEventStartTimeNotBetween(Date value1, Date value2) {
+        public Criteria andEventStartTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("event_start_time not between", value1, value2, "eventStartTime");
             return (Criteria) this;
         }

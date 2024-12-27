@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -29,7 +30,7 @@ public class AnswerData {
 
     private String eventType;
 
-    private Date eventStartTime;
+    private LocalDateTime eventStartTime;
 
     private Integer eventNumber;
 

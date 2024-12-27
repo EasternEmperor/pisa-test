@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -101,6 +103,10 @@ public class TestServiceImpl implements TestService {
         if (answerData == null) {
             throw new TestException("提交的答案为空！");
         }
+        // 时区调整：UTC -> 系统时间
+        ZonedDateTime utcZoneDateTime = answerData.getEventStartTime().atZone(ZoneId.of("UTC"));
+        ZonedDateTime systemZoneDateTime = utcZoneDateTime.withZoneSameInstant(ZoneId.systemDefault());
+        answerData.setEventStartTime(systemZoneDateTime.toLocalDateTime());
         // 获取改题目答题数据表名
         QuestionDOExample example = new QuestionDOExample();
         example.createCriteria().andHtmlNameEqualTo(answerData.getHtmlName());
@@ -175,6 +181,16 @@ public class TestServiceImpl implements TestService {
     @Override
     public void finishTest(UserAnswer userAnswer) {
         UserAnswerDO userAnswerDO = userAnswerAssembler.toDO(userAnswer);
+        // 时区调整：UTC -> 系统时间
+        // testBegin
+        ZonedDateTime utcZoneDateTime = userAnswerDO.getTestBegin().atZone(ZoneId.of("UTC"));
+        ZonedDateTime systemZoneDateTime = utcZoneDateTime.withZoneSameInstant(ZoneId.systemDefault());
+        userAnswerDO.setTestBegin(systemZoneDateTime.toLocalDateTime());
+        // testEnd
+        utcZoneDateTime = userAnswerDO.getTestEnd().atZone(ZoneId.of("UTC"));
+        systemZoneDateTime = utcZoneDateTime.withZoneSameInstant(ZoneId.systemDefault());
+        userAnswerDO.setTestEnd(systemZoneDateTime.toLocalDateTime());
+
         userAnswerRepository.insertUserAnswer(userAnswerDO);
     }
 }

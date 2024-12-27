@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -23,7 +24,7 @@ public class UserAnswerDTO {
 
     private Integer ithAnswer;
 
-    private Date testBegin;
+    private LocalDateTime testBegin;
 
-    private Date testEnd;
+    private LocalDateTime testEnd;
 }

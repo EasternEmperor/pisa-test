@@ -65,6 +65,7 @@ public class TestController {
         }
     }
 
+    @Deprecated
     @PostMapping("/submitAnswer")
     public Result submitAnswer(@RequestBody List<AnswerDataDTO> answerDataDTOs){
         try {

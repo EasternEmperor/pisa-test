@@ -5,9 +5,6 @@ public class UserDO {
 
     private String userName;
 
-    /**
-     * 用户类型：1管理员，0普通用户
-     */
     private Integer role;
 
     public Long getId() {

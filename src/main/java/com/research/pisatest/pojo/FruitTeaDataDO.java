@@ -1,6 +1,6 @@
 package com.research.pisatest.pojo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class FruitTeaDataDO {
     private Long id;
@@ -15,7 +15,7 @@ public class FruitTeaDataDO {
 
     private String eventType;
 
-    private Date eventStartTime;
+    private LocalDateTime eventStartTime;
 
     private Integer eventNumber;
 
@@ -85,11 +85,11 @@ public class FruitTeaDataDO {
         this.eventType = eventType == null ? null : eventType.trim();
     }
 
-    public Date getEventStartTime() {
+    public LocalDateTime getEventStartTime() {
         return eventStartTime;
     }
 
-    public void setEventStartTime(Date eventStartTime) {
+    public void setEventStartTime(LocalDateTime eventStartTime) {
         this.eventStartTime = eventStartTime;
     }
 

@@ -2,6 +2,7 @@ package com.research.pisatest.entity;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -17,7 +18,7 @@ public class UserAnswer {
 
     private Integer ithAnswer;
 
-    private Date testBegin;
+    private LocalDateTime testBegin;
 
-    private Date testEnd;
+    private LocalDateTime testEnd;
 }

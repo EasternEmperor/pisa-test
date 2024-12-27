@@ -1,6 +1,6 @@
 package com.research.pisatest.pojo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class UserAnswerDO {
     private Long id;
@@ -9,9 +9,9 @@ public class UserAnswerDO {
 
     private Integer ithAnswer;
 
-    private Date testBegin;
+    private LocalDateTime testBegin;
 
-    private Date testEnd;
+    private LocalDateTime testEnd;
 
     public Long getId() {
         return id;
@@ -37,19 +37,19 @@ public class UserAnswerDO {
         this.ithAnswer = ithAnswer;
     }
 
-    public Date getTestBegin() {
+    public LocalDateTime getTestBegin() {
         return testBegin;
     }
 
-    public void setTestBegin(Date testBegin) {
+    public void setTestBegin(LocalDateTime testBegin) {
         this.testBegin = testBegin;
     }
 
-    public Date getTestEnd() {
+    public LocalDateTime getTestEnd() {
         return testEnd;
     }
 
-    public void setTestEnd(Date testEnd) {
+    public void setTestEnd(LocalDateTime testEnd) {
         this.testEnd = testEnd;
     }
 }

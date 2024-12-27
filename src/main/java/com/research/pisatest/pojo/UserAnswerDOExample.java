@@ -1,7 +1,7 @@
 package com.research.pisatest.pojo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UserAnswerDOExample {
@@ -305,52 +305,52 @@ public class UserAnswerDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginEqualTo(Date value) {
+        public Criteria andTestBeginEqualTo(LocalDateTime value) {
             addCriterion("test_begin =", value, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginNotEqualTo(Date value) {
+        public Criteria andTestBeginNotEqualTo(LocalDateTime value) {
             addCriterion("test_begin <>", value, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginGreaterThan(Date value) {
+        public Criteria andTestBeginGreaterThan(LocalDateTime value) {
             addCriterion("test_begin >", value, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginGreaterThanOrEqualTo(Date value) {
+        public Criteria andTestBeginGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("test_begin >=", value, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginLessThan(Date value) {
+        public Criteria andTestBeginLessThan(LocalDateTime value) {
             addCriterion("test_begin <", value, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginLessThanOrEqualTo(Date value) {
+        public Criteria andTestBeginLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("test_begin <=", value, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginIn(List<Date> values) {
+        public Criteria andTestBeginIn(List<LocalDateTime> values) {
             addCriterion("test_begin in", values, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginNotIn(List<Date> values) {
+        public Criteria andTestBeginNotIn(List<LocalDateTime> values) {
             addCriterion("test_begin not in", values, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginBetween(Date value1, Date value2) {
+        public Criteria andTestBeginBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("test_begin between", value1, value2, "testBegin");
             return (Criteria) this;
         }
 
-        public Criteria andTestBeginNotBetween(Date value1, Date value2) {
+        public Criteria andTestBeginNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("test_begin not between", value1, value2, "testBegin");
             return (Criteria) this;
         }
@@ -365,52 +365,52 @@ public class UserAnswerDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestEndEqualTo(Date value) {
+        public Criteria andTestEndEqualTo(LocalDateTime value) {
             addCriterion("test_end =", value, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndNotEqualTo(Date value) {
+        public Criteria andTestEndNotEqualTo(LocalDateTime value) {
             addCriterion("test_end <>", value, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndGreaterThan(Date value) {
+        public Criteria andTestEndGreaterThan(LocalDateTime value) {
             addCriterion("test_end >", value, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndGreaterThanOrEqualTo(Date value) {
+        public Criteria andTestEndGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("test_end >=", value, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndLessThan(Date value) {
+        public Criteria andTestEndLessThan(LocalDateTime value) {
             addCriterion("test_end <", value, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndLessThanOrEqualTo(Date value) {
+        public Criteria andTestEndLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("test_end <=", value, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndIn(List<Date> values) {
+        public Criteria andTestEndIn(List<LocalDateTime> values) {
             addCriterion("test_end in", values, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndNotIn(List<Date> values) {
+        public Criteria andTestEndNotIn(List<LocalDateTime> values) {
             addCriterion("test_end not in", values, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndBetween(Date value1, Date value2) {
+        public Criteria andTestEndBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("test_end between", value1, value2, "testEnd");
             return (Criteria) this;
         }
 
-        public Criteria andTestEndNotBetween(Date value1, Date value2) {
+        public Criteria andTestEndNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("test_end not between", value1, value2, "testEnd");
             return (Criteria) this;
         }
