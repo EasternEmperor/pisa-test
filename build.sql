@@ -49,6 +49,7 @@ insert into p_pt_question(no, html_name, data_table) values(23, 'fruit_tea_t1', 
 insert into p_pt_question(no, html_name, data_table) values(24, 'fruit_tea_t2', 'p_pt_fruit_tea_data');
 insert into p_pt_question(no, html_name, data_table) values(25, 'camera_controller_t1', 'p_pt_camera_controller_data');
 insert into p_pt_question(no, html_name, data_table) values(26, 'camera_controller_t2', 'p_pt_camera_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(27, 'seats_schedule', 'p_pt_seats_schedule_data');
 
 create table p_pt_user_answer (
     id bigint(20) not null auto_increment,
@@ -372,3 +373,17 @@ create table p_pt_camera_controller_data (
 );
 -- insert into p_pt_camera_controller_data(html_name, user_name) values('camera.html','xiaoming20000101');
 -- insert into p_pt_camera_controller_data(html_name, user_name) values('camera.html','xiaogang20000909');
+
+create table p_pt_seats_schedule_data (
+    id bigint(20) not null auto_increment,
+    html_name varchar(100) not null default '' comment '题目对应的前端文件名',
+    user_name varchar(100) not null,
+    ith_answer int(2) not null default 1,
+    event varchar(50) not null default '' comment '操作事件',
+    event_type varchar(10) not null default '' comment '事件类型',
+    event_start_time timestamp(3) not null default current_timestamp(3),
+    event_number int(10) not null default 0 comment '事件对应的顺序',
+    diagram_state varchar(100) not null default 'NULL' comment '用户答案',
+    primary key(id),
+    key uk_user_name_ith_answer(user_name, ith_answer)
+);

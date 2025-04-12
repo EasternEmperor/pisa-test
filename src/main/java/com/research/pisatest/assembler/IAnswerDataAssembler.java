@@ -108,4 +108,10 @@ public interface IAnswerDataAssembler {
     List<AnswerData> cameraControllerDataDOListToEntityList(List<CameraControllerDataDO> cameraControllerDataDOList);
     CameraControllerDataDO toCameraControllerDataDO(AnswerData answerData);
     List<CameraControllerDataDO> toCameraControllerDataDOList(List<AnswerData> answerDataList);
+
+    // 15. 座位分配
+    AnswerData seatsScheduleDataDOToEntity(SeatsScheduleDataDO seatsScheduleDataDO);
+    List<AnswerData> seatsScheduleDataDOListToEntityList(List<SeatsScheduleDataDO> seatsScheduleDataDOList);
+    SeatsScheduleDataDO toSeatsScheduleDataDO(AnswerData answerData);
+    List<SeatsScheduleDataDO> toSeatsScheduleDataDOList(List<AnswerData> answerDataList);
 }

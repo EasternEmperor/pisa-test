@@ -170,6 +170,10 @@ public class TestServiceImpl implements TestService {
                 BigAirControllerDataDO bigAirControllerDataDO = answerDataAssembler.toBigAirControllerDataDO(answerData);
                 answerDataRepository.insertBigAirControllerData(bigAirControllerDataDO);
             }
+            case SEATS_SCHEDULE_DATA -> {
+                SeatsScheduleDataDO seatsScheduleDataDO = answerDataAssembler.toSeatsScheduleDataDO(answerData);
+                answerDataRepository.insertSeatsScheduleData(seatsScheduleDataDO);
+            }
             default -> throw new TestException("题目错误！");
         }
     }

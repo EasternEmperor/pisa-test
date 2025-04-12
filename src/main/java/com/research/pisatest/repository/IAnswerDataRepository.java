@@ -121,4 +121,12 @@ public interface IAnswerDataRepository {
     List<CameraControllerDataDO> getCameraControllerData(String htmlName, String userName, Integer ith);
     void batchInsertCameraControllerData(List<CameraControllerDataDO> cameraControllerDataDOs);
     void insertCameraControllerData(CameraControllerDataDO cameraControllerDataDO);
+
+    // SeatsScheduleData
+    List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName);
+    List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, String userName);
+    List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, Integer ith);
+    List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, String userName, Integer ith);
+    void batchInsertSeatsScheduleData(List<SeatsScheduleDataDO> seatsScheduleDataDOs);
+    void insertSeatsScheduleData(SeatsScheduleDataDO seatsScheduleDataDO);
 }

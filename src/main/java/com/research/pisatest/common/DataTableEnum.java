@@ -22,7 +22,9 @@ public enum DataTableEnum {
     RICE_COOKER_DATA("p_pt_rice_cooker_data", 11),
     COFFEE_MACHINE_DATA("p_pt_coffee_machine_data", 12),
     FRUIT_TEA_DATA("p_pt_fruit_tea_data", 13),
-    CAMERA_CONTROLLER_DATA("p_pt_camera_controller_data", 14);
+    CAMERA_CONTROLLER_DATA("p_pt_camera_controller_data", 14),
+    SEATS_SCHEDULE_DATA("p_pt_seats_schedule_data", 15),
+    ;
 
     private final String tableName;
     private final int index;

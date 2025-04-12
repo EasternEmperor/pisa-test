@@ -288,6 +288,23 @@ public class AnswerDataServiceImpl implements AnswerDataService {
                 }
                 yield answerDataAssembler.projectionControllerDataDOListToEntityList(projectionControllerDataDOList);
             }
+            case SEATS_SCHEDULE_DATA -> {
+                List<SeatsScheduleDataDO> seatsScheduleDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        seatsScheduleDataDOList = answerDataRepository.getSeatsScheduleData(htmlName);
+                    } else {
+                        seatsScheduleDataDOList = answerDataRepository.getSeatsScheduleData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        seatsScheduleDataDOList = answerDataRepository.getSeatsScheduleData(htmlName, userName);
+                    } else {
+                        seatsScheduleDataDOList = answerDataRepository.getSeatsScheduleData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.seatsScheduleDataDOListToEntityList(seatsScheduleDataDOList);
+            }
             default -> throw new AnswerDataException("没有符合的题目：" + htmlName);
         };
         // 设置每个AnswerData对象的表名属性为dataTableEnum的索引值

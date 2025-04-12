@@ -79,6 +79,10 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     @Autowired
     private CameraControllerDataDOMapper cameraControllerDataDOMapper;
 
+    // 座位分配
+    @Autowired
+    private SeatsScheduleDataDOMapper seatsScheduleDataDOMapper;
+
 
     @Override
     public List<AirControllerDataDO> getAirControllerData(String htmlName) {
@@ -612,5 +616,43 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     @Override
     public void insertCameraControllerData(CameraControllerDataDO cameraControllerDataDO) {
         cameraControllerDataDOMapper.insert(cameraControllerDataDO);
+    }
+
+    @Override
+    public List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName) {
+        SeatsScheduleDataDOExample example = new SeatsScheduleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName);
+        return seatsScheduleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, String userName) {
+        SeatsScheduleDataDOExample example = new SeatsScheduleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName);
+        return seatsScheduleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, Integer ith) {
+        SeatsScheduleDataDOExample example = new SeatsScheduleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andIthAnswerEqualTo(ith);
+        return seatsScheduleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, String userName, Integer ith) {
+        SeatsScheduleDataDOExample example = new SeatsScheduleDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        return seatsScheduleDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public void batchInsertSeatsScheduleData(List<SeatsScheduleDataDO> seatsScheduleDataDOs) {
+        throw new AnswerDataException("暂不支持批量插入～");
+    }
+
+    @Override
+    public void insertSeatsScheduleData(SeatsScheduleDataDO seatsScheduleDataDO) {
+        seatsScheduleDataDOMapper.insert(seatsScheduleDataDO);
     }
 }
