@@ -129,4 +129,20 @@ public interface IAnswerDataRepository {
     List<SeatsScheduleDataDO> getSeatsScheduleData(String htmlName, String userName, Integer ith);
     void batchInsertSeatsScheduleData(List<SeatsScheduleDataDO> seatsScheduleDataDOs);
     void insertSeatsScheduleData(SeatsScheduleDataDO seatsScheduleDataDO);
+
+    // SunlightControllerData
+    List<SunlightControllerDataDO> getSunlightControllerData(String htmlName);
+    List<SunlightControllerDataDO> getSunlightControllerData(String htmlName, String userName);
+    List<SunlightControllerDataDO> getSunlightControllerData(String htmlName, Integer ith);
+    List<SunlightControllerDataDO> getSunlightControllerData(String htmlName, String userName, Integer ith);
+    void batchInsertSunlightControllerData(List<SunlightControllerDataDO> sunlightControllerDataDOs);
+    void insertSunlightControllerData(SunlightControllerDataDO sunlightControllerDataDO);
+
+    // SaunaControllerData
+    List<SaunaControllerDataDO> getSaunaControllerData(String htmlName);
+    List<SaunaControllerDataDO> getSaunaControllerData(String htmlName, String userName);
+    List<SaunaControllerDataDO> getSaunaControllerData(String htmlName, Integer ith);
+    List<SaunaControllerDataDO> getSaunaControllerData(String htmlName, String userName, Integer ith);
+    void batchInsertSaunaControllerData(List<SaunaControllerDataDO> saunaControllerDataDOs);
+    void insertSaunaControllerData(SaunaControllerDataDO saunaControllerDataDO);
 }

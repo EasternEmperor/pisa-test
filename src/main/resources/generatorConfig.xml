@@ -181,6 +181,18 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
+        <table tableName="p_pt_sunlight_controller_data" domainObjectName="SunlightControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="p_pt_sauna_controller_data" domainObjectName="SaunaControllerDataDO" enableSelectByExample="true" selectByExampleQueryId="false" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="ture">
+                <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
     </context>
 
 </generatorConfiguration>

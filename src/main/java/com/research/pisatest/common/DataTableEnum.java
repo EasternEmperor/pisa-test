@@ -24,6 +24,8 @@ public enum DataTableEnum {
     FRUIT_TEA_DATA("p_pt_fruit_tea_data", 13),
     CAMERA_CONTROLLER_DATA("p_pt_camera_controller_data", 14),
     SEATS_SCHEDULE_DATA("p_pt_seats_schedule_data", 15),
+    SUNLIGHT_CONTROLLER_DATA("p_pt_sunlight_controller_data", 16),
+    SAUNA_CONTROLLER_DATA("p_pt_sauna_controller_data", 17),
     ;
 
     private final String tableName;

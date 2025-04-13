@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.research.pisatest.mapper.SunlightControllerDataDOMapper">
+  <resultMap id="BaseResultMap" type="com.research.pisatest.pojo.SunlightControllerDataDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="html_name" jdbcType="VARCHAR" property="htmlName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="ith_answer" jdbcType="INTEGER" property="ithAnswer" />
+    <result column="event" jdbcType="VARCHAR" property="event" />
+    <result column="event_type" jdbcType="VARCHAR" property="eventType" />
+    <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
+    <result column="event_number" jdbcType="INTEGER" property="eventNumber" />
+    <result column="top_setting" jdbcType="VARCHAR" property="topSetting" />
+    <result column="central_setting" jdbcType="VARCHAR" property="centralSetting" />
+    <result column="bottom_setting" jdbcType="VARCHAR" property="bottomSetting" />
+    <result column="area_value" jdbcType="VARCHAR" property="areaValue" />
+    <result column="time_value" jdbcType="VARCHAR" property="timeValue" />
+    <result column="strength_value" jdbcType="VARCHAR" property="strengthValue" />
+    <result column="diagram_state" jdbcType="VARCHAR" property="diagramState" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, html_name, user_name, ith_answer, event, event_type, event_start_time, event_number, 
+    top_setting, central_setting, bottom_setting, area_value, time_value, strength_value, 
+    diagram_state
+  </sql>
+  <select id="selectByExample" parameterType="com.research.pisatest.pojo.SunlightControllerDataDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from p_pt_sunlight_controller_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_pt_sunlight_controller_data
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_pt_sunlight_controller_data
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.research.pisatest.pojo.SunlightControllerDataDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into p_pt_sunlight_controller_data (html_name, user_name, ith_answer, 
+      event, event_type, event_start_time, 
+      event_number, top_setting, central_setting, 
+      bottom_setting, area_value, time_value, 
+      strength_value, diagram_state)
+    values (#{htmlName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{ithAnswer,jdbcType=INTEGER}, 
+      #{event,jdbcType=VARCHAR}, #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP}, 
+      #{eventNumber,jdbcType=INTEGER}, #{topSetting,jdbcType=VARCHAR}, #{centralSetting,jdbcType=VARCHAR}, 
+      #{bottomSetting,jdbcType=VARCHAR}, #{areaValue,jdbcType=VARCHAR}, #{timeValue,jdbcType=VARCHAR}, 
+      #{strengthValue,jdbcType=VARCHAR}, #{diagramState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.research.pisatest.pojo.SunlightControllerDataDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into p_pt_sunlight_controller_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="htmlName != null">
+        html_name,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="ithAnswer != null">
+        ith_answer,
+      </if>
+      <if test="event != null">
+        event,
+      </if>
+      <if test="eventType != null">
+        event_type,
+      </if>
+      <if test="eventStartTime != null">
+        event_start_time,
+      </if>
+      <if test="eventNumber != null">
+        event_number,
+      </if>
+      <if test="topSetting != null">
+        top_setting,
+      </if>
+      <if test="centralSetting != null">
+        central_setting,
+      </if>
+      <if test="bottomSetting != null">
+        bottom_setting,
+      </if>
+      <if test="areaValue != null">
+        area_value,
+      </if>
+      <if test="timeValue != null">
+        time_value,
+      </if>
+      <if test="strengthValue != null">
+        strength_value,
+      </if>
+      <if test="diagramState != null">
+        diagram_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="htmlName != null">
+        #{htmlName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="ithAnswer != null">
+        #{ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="event != null">
+        #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="eventType != null">
+        #{eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventStartTime != null">
+        #{eventStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eventNumber != null">
+        #{eventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="topSetting != null">
+        #{topSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="centralSetting != null">
+        #{centralSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="bottomSetting != null">
+        #{bottomSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="areaValue != null">
+        #{areaValue,jdbcType=VARCHAR},
+      </if>
+      <if test="timeValue != null">
+        #{timeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="strengthValue != null">
+        #{strengthValue,jdbcType=VARCHAR},
+      </if>
+      <if test="diagramState != null">
+        #{diagramState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.research.pisatest.pojo.SunlightControllerDataDOExample" resultType="java.lang.Long">
+    select count(*) from p_pt_sunlight_controller_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update p_pt_sunlight_controller_data
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.htmlName != null">
+        html_name = #{record.htmlName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ithAnswer != null">
+        ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="record.event != null">
+        event = #{record.event,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eventType != null">
+        event_type = #{record.eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eventStartTime != null">
+        event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.eventNumber != null">
+        event_number = #{record.eventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.topSetting != null">
+        top_setting = #{record.topSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="record.centralSetting != null">
+        central_setting = #{record.centralSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bottomSetting != null">
+        bottom_setting = #{record.bottomSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaValue != null">
+        area_value = #{record.areaValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeValue != null">
+        time_value = #{record.timeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.strengthValue != null">
+        strength_value = #{record.strengthValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diagramState != null">
+        diagram_state = #{record.diagramState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update p_pt_sunlight_controller_data
+    set id = #{record.id,jdbcType=BIGINT},
+      html_name = #{record.htmlName,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      ith_answer = #{record.ithAnswer,jdbcType=INTEGER},
+      event = #{record.event,jdbcType=VARCHAR},
+      event_type = #{record.eventType,jdbcType=VARCHAR},
+      event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
+      event_number = #{record.eventNumber,jdbcType=INTEGER},
+      top_setting = #{record.topSetting,jdbcType=VARCHAR},
+      central_setting = #{record.centralSetting,jdbcType=VARCHAR},
+      bottom_setting = #{record.bottomSetting,jdbcType=VARCHAR},
+      area_value = #{record.areaValue,jdbcType=VARCHAR},
+      time_value = #{record.timeValue,jdbcType=VARCHAR},
+      strength_value = #{record.strengthValue,jdbcType=VARCHAR},
+      diagram_state = #{record.diagramState,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.research.pisatest.pojo.SunlightControllerDataDO">
+    update p_pt_sunlight_controller_data
+    <set>
+      <if test="htmlName != null">
+        html_name = #{htmlName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="ithAnswer != null">
+        ith_answer = #{ithAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="event != null">
+        event = #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="eventType != null">
+        event_type = #{eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventStartTime != null">
+        event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eventNumber != null">
+        event_number = #{eventNumber,jdbcType=INTEGER},
+      </if>
+      <if test="topSetting != null">
+        top_setting = #{topSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="centralSetting != null">
+        central_setting = #{centralSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="bottomSetting != null">
+        bottom_setting = #{bottomSetting,jdbcType=VARCHAR},
+      </if>
+      <if test="areaValue != null">
+        area_value = #{areaValue,jdbcType=VARCHAR},
+      </if>
+      <if test="timeValue != null">
+        time_value = #{timeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="strengthValue != null">
+        strength_value = #{strengthValue,jdbcType=VARCHAR},
+      </if>
+      <if test="diagramState != null">
+        diagram_state = #{diagramState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.research.pisatest.pojo.SunlightControllerDataDO">
+    update p_pt_sunlight_controller_data
+    set html_name = #{htmlName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      ith_answer = #{ithAnswer,jdbcType=INTEGER},
+      event = #{event,jdbcType=VARCHAR},
+      event_type = #{eventType,jdbcType=VARCHAR},
+      event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
+      event_number = #{eventNumber,jdbcType=INTEGER},
+      top_setting = #{topSetting,jdbcType=VARCHAR},
+      central_setting = #{centralSetting,jdbcType=VARCHAR},
+      bottom_setting = #{bottomSetting,jdbcType=VARCHAR},
+      area_value = #{areaValue,jdbcType=VARCHAR},
+      time_value = #{timeValue,jdbcType=VARCHAR},
+      strength_value = #{strengthValue,jdbcType=VARCHAR},
+      diagram_state = #{diagramState,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

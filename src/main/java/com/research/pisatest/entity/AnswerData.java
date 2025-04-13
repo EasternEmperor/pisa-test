@@ -115,6 +115,16 @@ public class AnswerData {
     // 座位安排
     private String choosePool;
 
+    // 阳光控制
+//    private String areaValue;
+    private String timeValue;
+    private String strengthValue;
+
+    // 桑拿控制
+//    private String tempValue;
+//    private String humidValue;
+//    private String timeValue
+
     // 图表状态
     private String diagramState;
 }

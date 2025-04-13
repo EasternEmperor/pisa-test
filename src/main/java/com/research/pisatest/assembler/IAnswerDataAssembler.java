@@ -114,4 +114,16 @@ public interface IAnswerDataAssembler {
     List<AnswerData> seatsScheduleDataDOListToEntityList(List<SeatsScheduleDataDO> seatsScheduleDataDOList);
     SeatsScheduleDataDO toSeatsScheduleDataDO(AnswerData answerData);
     List<SeatsScheduleDataDO> toSeatsScheduleDataDOList(List<AnswerData> answerDataList);
+
+    // 16. 阳光控制
+    AnswerData sunlightControllerDataDOToEntity(SunlightControllerDataDO sunlightControllerDataDO);
+    List<AnswerData> sunlightControllerDataDOListToEntityList(List<SunlightControllerDataDO> sunlightControllerDataDOList);
+    SunlightControllerDataDO toSunlightControllerDataDO(AnswerData answerData);
+    List<SunlightControllerDataDO> toSunlightControllerDataDOList(List<AnswerData> answerDataList);
+
+    // 17. 桑拿控制
+    AnswerData saunaControllerDataDOToEntity(SaunaControllerDataDO saunaControllerDataDO);
+    List<AnswerData> saunaControllerDataDOListToEntityList(List<SaunaControllerDataDO> saunaControllerDataDOList);
+    SaunaControllerDataDO toSaunaControllerDataDO(AnswerData answerData);
+    List<SaunaControllerDataDO> toSaunaControllerDataDOList(List<AnswerData> answerDataList);
 }

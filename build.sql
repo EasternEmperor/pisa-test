@@ -50,6 +50,10 @@ insert into p_pt_question(no, html_name, data_table) values(24, 'fruit_tea_t2', 
 insert into p_pt_question(no, html_name, data_table) values(25, 'camera_controller_t1', 'p_pt_camera_controller_data');
 insert into p_pt_question(no, html_name, data_table) values(26, 'camera_controller_t2', 'p_pt_camera_controller_data');
 insert into p_pt_question(no, html_name, data_table) values(27, 'seats_schedule', 'p_pt_seats_schedule_data');
+insert into p_pt_question(no, html_name, data_table) values(28, 'sunlight_controller_t1', 'p_pt_sunlight_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(29, 'sunlight_controller_t2', 'p_pt_sunlight_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(30, 'sauna_controller_t1', 'p_pt_sauna_controller_data');
+insert into p_pt_question(no, html_name, data_table) values(31, 'sauna_controller_t2', 'p_pt_sauna_controller_data');
 
 create table p_pt_user_answer (
     id bigint(20) not null auto_increment,
@@ -421,9 +425,9 @@ create table p_pt_sauna_controller_data (
     top_setting varchar(10) not null default 'NULL' comment 'top control设置的大小',
     central_setting varchar(10) not null default 'NULL' comment 'central control设置的大小',
     bottom_setting varchar(10) not null default 'NULL' comment 'bottom control设置的大小',
-    temp_value varchar(10) not null default 'NULL' comment '照射面积大小',
-    humid_value varchar(10) not null default 'NULL' comment '照射时间大小',
-    time_value varchar(10) not null default 'NULL' comment '照射强度大小',
+    temp_value varchar(10) not null default 'NULL' comment '房间温度大小',
+    humid_value varchar(10) not null default 'NULL' comment '房间湿度大小',
+    time_value varchar(10) not null default 'NULL' comment '桑拿时间大小',
     diagram_state varchar(100) not null default 'NULL' comment '用户答案',
     primary key(id),
     key uk_user_name_ith_answer(user_name, ith_answer)

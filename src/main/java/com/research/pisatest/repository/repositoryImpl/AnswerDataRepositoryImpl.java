@@ -83,6 +83,14 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     @Autowired
     private SeatsScheduleDataDOMapper seatsScheduleDataDOMapper;
 
+    // 阳光控制
+    @Autowired
+    private SunlightControllerDataDOMapper sunlightControllerDataDOMapper;
+
+    // 桑拿控制
+    @Autowired
+    private SaunaControllerDataDOMapper saunaControllerDataDOMapper;
+
 
     @Override
     public List<AirControllerDataDO> getAirControllerData(String htmlName) {
@@ -654,5 +662,81 @@ public class AnswerDataRepositoryImpl implements IAnswerDataRepository {
     @Override
     public void insertSeatsScheduleData(SeatsScheduleDataDO seatsScheduleDataDO) {
         seatsScheduleDataDOMapper.insert(seatsScheduleDataDO);
+    }
+
+    @Override
+    public List<SunlightControllerDataDO> getSunlightControllerData(String htmlName) {
+        SunlightControllerDataDOExample example = new SunlightControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName);
+        return sunlightControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SunlightControllerDataDO> getSunlightControllerData(String htmlName, String userName) {
+        SunlightControllerDataDOExample example = new SunlightControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName);
+        return sunlightControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SunlightControllerDataDO> getSunlightControllerData(String htmlName, Integer ith) {
+        SunlightControllerDataDOExample example = new SunlightControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andIthAnswerEqualTo(ith);
+        return sunlightControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SunlightControllerDataDO> getSunlightControllerData(String htmlName, String userName, Integer ith) {
+        SunlightControllerDataDOExample example = new SunlightControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        return sunlightControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public void batchInsertSunlightControllerData(List<SunlightControllerDataDO> sunlightControllerDataDOs) {
+        throw new AnswerDataException("暂不支持批量插入～");
+    }
+
+    @Override
+    public void insertSunlightControllerData(SunlightControllerDataDO sunlightControllerDataDO) {
+        sunlightControllerDataDOMapper.insert(sunlightControllerDataDO);
+    }
+
+    @Override
+    public List<SaunaControllerDataDO> getSaunaControllerData(String htmlName) {
+        SaunaControllerDataDOExample example = new SaunaControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName);
+        return saunaControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SaunaControllerDataDO> getSaunaControllerData(String htmlName, String userName) {
+        SaunaControllerDataDOExample example = new SaunaControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName);
+        return saunaControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SaunaControllerDataDO> getSaunaControllerData(String htmlName, Integer ith) {
+        SaunaControllerDataDOExample example = new SaunaControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andIthAnswerEqualTo(ith);
+        return saunaControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<SaunaControllerDataDO> getSaunaControllerData(String htmlName, String userName, Integer ith) {
+        SaunaControllerDataDOExample example = new SaunaControllerDataDOExample();
+        example.createCriteria().andHtmlNameEqualTo(htmlName).andUserNameEqualTo(userName).andIthAnswerEqualTo(ith);
+        return saunaControllerDataDOMapper.selectByExample(example);
+    }
+
+    @Override
+    public void batchInsertSaunaControllerData(List<SaunaControllerDataDO> saunaControllerDataDOs) {
+        throw new AnswerDataException("暂不支持批量插入～");
+    }
+
+    @Override
+    public void insertSaunaControllerData(SaunaControllerDataDO saunaControllerDataDO) {
+        saunaControllerDataDOMapper.insert(saunaControllerDataDO);
     }
 }

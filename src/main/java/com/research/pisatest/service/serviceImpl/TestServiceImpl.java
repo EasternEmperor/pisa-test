@@ -174,6 +174,14 @@ public class TestServiceImpl implements TestService {
                 SeatsScheduleDataDO seatsScheduleDataDO = answerDataAssembler.toSeatsScheduleDataDO(answerData);
                 answerDataRepository.insertSeatsScheduleData(seatsScheduleDataDO);
             }
+            case SUNLIGHT_CONTROLLER_DATA -> {
+                SunlightControllerDataDO sunlightControllerDataDO = answerDataAssembler.toSunlightControllerDataDO(answerData);
+                answerDataRepository.insertSunlightControllerData(sunlightControllerDataDO);
+            }
+            case SAUNA_CONTROLLER_DATA -> {
+                SaunaControllerDataDO saunaControllerDataDO = answerDataAssembler.toSaunaControllerDataDO(answerData);
+                answerDataRepository.insertSaunaControllerData(saunaControllerDataDO);
+            }
             default -> throw new TestException("题目错误！");
         }
     }

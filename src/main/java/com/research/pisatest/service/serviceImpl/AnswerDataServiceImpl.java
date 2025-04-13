@@ -305,6 +305,40 @@ public class AnswerDataServiceImpl implements AnswerDataService {
                 }
                 yield answerDataAssembler.seatsScheduleDataDOListToEntityList(seatsScheduleDataDOList);
             }
+            case SUNLIGHT_CONTROLLER_DATA -> {
+                List<SunlightControllerDataDO> sunlightControllerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        sunlightControllerDataDOList = answerDataRepository.getSunlightControllerData(htmlName);
+                    } else {
+                        sunlightControllerDataDOList = answerDataRepository.getSunlightControllerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        sunlightControllerDataDOList = answerDataRepository.getSunlightControllerData(htmlName, userName);
+                    } else {
+                        sunlightControllerDataDOList = answerDataRepository.getSunlightControllerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.sunlightControllerDataDOListToEntityList(sunlightControllerDataDOList);
+            }
+            case SAUNA_CONTROLLER_DATA -> {
+                List<SaunaControllerDataDO> saunaControllerDataDOList = null;
+                if (Constants.ALL.equals(userName)) {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        saunaControllerDataDOList = answerDataRepository.getSaunaControllerData(htmlName);
+                    } else {
+                        saunaControllerDataDOList = answerDataRepository.getSaunaControllerData(htmlName, ithAnswer);
+                    }
+                } else {
+                    if (Constants.ALL.equals(String.valueOf(ithAnswer))) {
+                        saunaControllerDataDOList = answerDataRepository.getSaunaControllerData(htmlName, userName);
+                    } else {
+                        saunaControllerDataDOList = answerDataRepository.getSaunaControllerData(htmlName, userName, ithAnswer);
+                    }
+                }
+                yield answerDataAssembler.saunaControllerDataDOListToEntityList(saunaControllerDataDOList);
+            }
             default -> throw new AnswerDataException("没有符合的题目：" + htmlName);
         };
         // 设置每个AnswerData对象的表名属性为dataTableEnum的索引值
