@@ -11,6 +11,7 @@
     <result column="event_start_time" jdbcType="TIMESTAMP" property="eventStartTime" />
     <result column="event_number" jdbcType="INTEGER" property="eventNumber" />
     <result column="diagram_state" jdbcType="VARCHAR" property="diagramState" />
+    <result column="choose_pool" jdbcType="VARCHAR" property="choosePool" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, html_name, user_name, ith_answer, event, event_type, event_start_time, event_number, 
-    diagram_state
+    diagram_state, choose_pool
   </sql>
   <select id="selectByExample" parameterType="com.research.pisatest.pojo.SeatsScheduleDataDOExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,12 @@
     </selectKey>
     insert into p_pt_seats_schedule_data (html_name, user_name, ith_answer, 
       event, event_type, event_start_time, 
-      event_number, diagram_state)
+      event_number, diagram_state, choose_pool
+      )
     values (#{htmlName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{ithAnswer,jdbcType=INTEGER}, 
       #{event,jdbcType=VARCHAR}, #{eventType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=TIMESTAMP}, 
-      #{eventNumber,jdbcType=INTEGER}, #{diagramState,jdbcType=VARCHAR})
+      #{eventNumber,jdbcType=INTEGER}, #{diagramState,jdbcType=VARCHAR}, #{choosePool,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.research.pisatest.pojo.SeatsScheduleDataDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -140,6 +143,9 @@
       <if test="diagramState != null">
         diagram_state,
       </if>
+      <if test="choosePool != null">
+        choose_pool,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="htmlName != null">
@@ -165,6 +171,9 @@
       </if>
       <if test="diagramState != null">
         #{diagramState,jdbcType=VARCHAR},
+      </if>
+      <if test="choosePool != null">
+        #{choosePool,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -204,6 +213,9 @@
       <if test="record.diagramState != null">
         diagram_state = #{record.diagramState,jdbcType=VARCHAR},
       </if>
+      <if test="record.choosePool != null">
+        choose_pool = #{record.choosePool,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -219,7 +231,8 @@
       event_type = #{record.eventType,jdbcType=VARCHAR},
       event_start_time = #{record.eventStartTime,jdbcType=TIMESTAMP},
       event_number = #{record.eventNumber,jdbcType=INTEGER},
-      diagram_state = #{record.diagramState,jdbcType=VARCHAR}
+      diagram_state = #{record.diagramState,jdbcType=VARCHAR},
+      choose_pool = #{record.choosePool,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -251,6 +264,9 @@
       <if test="diagramState != null">
         diagram_state = #{diagramState,jdbcType=VARCHAR},
       </if>
+      <if test="choosePool != null">
+        choose_pool = #{choosePool,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -263,7 +279,8 @@
       event_type = #{eventType,jdbcType=VARCHAR},
       event_start_time = #{eventStartTime,jdbcType=TIMESTAMP},
       event_number = #{eventNumber,jdbcType=INTEGER},
-      diagram_state = #{diagramState,jdbcType=VARCHAR}
+      diagram_state = #{diagramState,jdbcType=VARCHAR},
+      choose_pool = #{choosePool,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

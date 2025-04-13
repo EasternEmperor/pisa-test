@@ -694,6 +694,76 @@ public class SeatsScheduleDataDOExample {
             addCriterion("diagram_state not between", value1, value2, "diagramState");
             return (Criteria) this;
         }
+
+        public Criteria andChoosePoolIsNull() {
+            addCriterion("choose_pool is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolIsNotNull() {
+            addCriterion("choose_pool is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolEqualTo(String value) {
+            addCriterion("choose_pool =", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolNotEqualTo(String value) {
+            addCriterion("choose_pool <>", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolGreaterThan(String value) {
+            addCriterion("choose_pool >", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolGreaterThanOrEqualTo(String value) {
+            addCriterion("choose_pool >=", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolLessThan(String value) {
+            addCriterion("choose_pool <", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolLessThanOrEqualTo(String value) {
+            addCriterion("choose_pool <=", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolLike(String value) {
+            addCriterion("choose_pool like", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolNotLike(String value) {
+            addCriterion("choose_pool not like", value, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolIn(List<String> values) {
+            addCriterion("choose_pool in", values, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolNotIn(List<String> values) {
+            addCriterion("choose_pool not in", values, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolBetween(String value1, String value2) {
+            addCriterion("choose_pool between", value1, value2, "choosePool");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosePoolNotBetween(String value1, String value2) {
+            addCriterion("choose_pool not between", value1, value2, "choosePool");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

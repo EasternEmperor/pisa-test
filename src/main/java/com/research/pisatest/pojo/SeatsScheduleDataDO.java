@@ -21,6 +21,8 @@ public class SeatsScheduleDataDO {
 
     private String diagramState;
 
+    private String choosePool;
+
     public Long getId() {
         return id;
     }
@@ -91,5 +93,13 @@ public class SeatsScheduleDataDO {
 
     public void setDiagramState(String diagramState) {
         this.diagramState = diagramState == null ? null : diagramState.trim();
+    }
+
+    public String getChoosePool() {
+        return choosePool;
+    }
+
+    public void setChoosePool(String choosePool) {
+        this.choosePool = choosePool == null ? null : choosePool.trim();
     }
 }

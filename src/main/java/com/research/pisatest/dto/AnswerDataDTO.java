@@ -112,6 +112,9 @@ public class AnswerDataDTO {
     private String virtualizationValue;
     private String rangeValue;
 
+    // 座位安排
+    private String choosePool;
+
     // 图表状态
     private String diagramState;
 

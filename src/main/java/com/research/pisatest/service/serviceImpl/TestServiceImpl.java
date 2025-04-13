@@ -107,12 +107,12 @@ public class TestServiceImpl implements TestService {
         ZonedDateTime utcZoneDateTime = answerData.getEventStartTime().atZone(ZoneId.of("UTC"));
         ZonedDateTime systemZoneDateTime = utcZoneDateTime.withZoneSameInstant(ZoneId.systemDefault());
         answerData.setEventStartTime(systemZoneDateTime.toLocalDateTime());
-        // 获取改题目答题数据表名
+        // 获取该题目答题数据表名
         QuestionDOExample example = new QuestionDOExample();
         example.createCriteria().andHtmlNameEqualTo(answerData.getHtmlName());
         String tableName = questionDOMapper.selectByExample(example).get(0).getDataTable();
         DataTableEnum dataTableEnum = DataTableEnum.getEnumByTableName(tableName);
-        // 查询数据
+        // 插入答题数据
         switch (dataTableEnum) {
             case AIR_CONDITIONER_DATA -> {
                 AirControllerDataDO airControllerDataDO = answerDataAssembler.toAirControllerDataDO(answerData);

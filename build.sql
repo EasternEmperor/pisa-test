@@ -383,6 +383,47 @@ create table p_pt_seats_schedule_data (
     event_type varchar(10) not null default '' comment '事件类型',
     event_start_time timestamp(3) not null default current_timestamp(3),
     event_number int(10) not null default 0 comment '事件对应的顺序',
+    choose_pool varchar(100) CHARACTER SET utf8mb4 not null default 'NULL' comment '选项池',
+    diagram_state varchar(100) CHARACTER SET utf8mb4 not null default 'NULL' comment '用户答案',
+    primary key(id),
+    key uk_user_name_ith_answer(user_name, ith_answer)
+);
+
+create table p_pt_sunlight_controller_data (
+    id bigint(20) not null auto_increment,
+    html_name varchar(100) not null default '' comment '题目对应的前端文件名',
+    user_name varchar(100) not null,
+    ith_answer int(2) not null default 1,
+    event varchar(50) not null default '' comment '操作事件',
+    event_type varchar(10) not null default '' comment '事件类型',
+    event_start_time timestamp(3) not null default current_timestamp(3),
+    event_number int(10) not null default 0 comment '事件对应的顺序',
+    top_setting varchar(10) not null default 'NULL' comment 'top control设置的大小',
+    central_setting varchar(10) not null default 'NULL' comment 'central control设置的大小',
+    bottom_setting varchar(10) not null default 'NULL' comment 'bottom control设置的大小',
+    area_value varchar(10) not null default 'NULL' comment '照射面积大小',
+    time_value varchar(10) not null default 'NULL' comment '照射时间大小',
+    strength_value varchar(10) not null default 'NULL' comment '照射强度大小',
+    diagram_state varchar(100) not null default 'NULL' comment '用户答案',
+    primary key(id),
+    key uk_user_name_ith_answer(user_name, ith_answer)
+);
+
+create table p_pt_sauna_controller_data (
+    id bigint(20) not null auto_increment,
+    html_name varchar(100) not null default '' comment '题目对应的前端文件名',
+    user_name varchar(100) not null,
+    ith_answer int(2) not null default 1,
+    event varchar(50) not null default '' comment '操作事件',
+    event_type varchar(10) not null default '' comment '事件类型',
+    event_start_time timestamp(3) not null default current_timestamp(3),
+    event_number int(10) not null default 0 comment '事件对应的顺序',
+    top_setting varchar(10) not null default 'NULL' comment 'top control设置的大小',
+    central_setting varchar(10) not null default 'NULL' comment 'central control设置的大小',
+    bottom_setting varchar(10) not null default 'NULL' comment 'bottom control设置的大小',
+    temp_value varchar(10) not null default 'NULL' comment '照射面积大小',
+    humid_value varchar(10) not null default 'NULL' comment '照射时间大小',
+    time_value varchar(10) not null default 'NULL' comment '照射强度大小',
     diagram_state varchar(100) not null default 'NULL' comment '用户答案',
     primary key(id),
     key uk_user_name_ith_answer(user_name, ith_answer)
