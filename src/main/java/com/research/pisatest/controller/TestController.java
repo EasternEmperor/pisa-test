@@ -83,6 +83,23 @@ public class TestController {
         }
     }
 
+    /**
+     * 获取本次答题的续答位置（用于重复作答时自动跳转到最新答题处）
+     * @param userName 用户名
+     * @param ithAnswer 第几次答题
+     * @return 续答题目
+     */
+    @GetMapping("/getResumeQuestion")
+    public Result getResumeQuestion(@RequestParam String userName, @RequestParam Integer ithAnswer){
+        try {
+            Question question = testService.getResumeQuestion(userName, ithAnswer);
+            QuestionDTO questionDTO = questionAssembler.toQuestionDTO(question);
+            return Result.success(questionDTO, "获取续答位置成功");
+        } catch (Exception e) {
+            return Result.error(Constants.ERROR_CODE, e.getMessage());
+        }
+    }
+
     @Deprecated
     @PostMapping("/submitAnswer")
     public Result submitAnswer(@RequestBody List<AnswerDataDTO> answerDataDTOs){

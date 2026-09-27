@@ -254,4 +254,51 @@ public class TestServiceImpl implements TestService {
         return questionAssembler.DOToQuestion(next);
     }
 
+
+    /**
+     * 获取本次答题的续答位置：最远已作答题若已完成则返回其下一题，未完成则返回该题继续作答
+     */
+    @Override
+    public Question getResumeQuestion(String userName, Integer ithAnswer) {
+        Integer maxNo = answerSessionExtMapper.selectMaxAnsweredNo(userName, ithAnswer);
+        QuestionDO target;
+        if (maxNo == null || maxNo < 1) {
+            QuestionDOExample firstExample = new QuestionDOExample();
+            firstExample.createCriteria().andNoEqualTo(1);
+            java.util.List<QuestionDO> firstList = questionDOMapper.selectByExample(firstExample);
+            if (firstList.isEmpty()) {
+                throw new TestException("题库为空");
+            }
+            target = firstList.get(0);
+        } else {
+            QuestionDOExample furthestExample = new QuestionDOExample();
+            furthestExample.createCriteria().andNoEqualTo(maxNo);
+            java.util.List<QuestionDO> furthestList = questionDOMapper.selectByExample(furthestExample);
+            if (furthestList.isEmpty()) {
+                throw new TestException("未找到题目：no=" + maxNo);
+            }
+            QuestionDO furthest = furthestList.get(0);
+            DataTableEnum furthestEnum = DataTableEnum.getEnumByTableName(furthest.getDataTable());
+            if (furthestEnum == DataTableEnum.UNKNOWN_TABLE) {
+                throw new TestException("题目错误！");
+            }
+            int completed = answerSessionExtMapper.countCompletedEvents(furthest.getDataTable(), userName, ithAnswer, furthest.getHtmlName());
+            if (completed > 0) {
+                QuestionDOExample nextExample = new QuestionDOExample();
+                nextExample.createCriteria().andNoGreaterThan(maxNo);
+                nextExample.setOrderByClause("no asc");
+                java.util.List<QuestionDO> nextList = questionDOMapper.selectByExample(nextExample);
+                if (nextList.isEmpty()) {
+                    target = new QuestionDO();
+                    target.setHtmlName("finished");
+                } else {
+                    target = nextList.get(0);
+                }
+            } else {
+                target = furthest;
+            }
+        }
+        return questionAssembler.DOToQuestion(target);
+    }
+
 }

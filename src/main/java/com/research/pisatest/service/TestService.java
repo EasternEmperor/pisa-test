@@ -28,5 +28,13 @@ public interface TestService {
      */
     Question getNextQuestion(String userName, Integer ithAnswer, String htmlName);
 
+    /**
+     * 获取本次答题的续答位置：最远已作答题若已完成则返回其下一题，未完成则返回该题继续作答
+     * @param userName 用户名
+     * @param ithAnswer 第几次答题
+     * @return 续答题目；全部完成则返回 htmlName=finished
+     */
+    Question getResumeQuestion(String userName, Integer ithAnswer);
+
     void finishTest(UserAnswer userAnswer);
 }

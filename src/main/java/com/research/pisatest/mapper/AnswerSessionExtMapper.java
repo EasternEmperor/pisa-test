@@ -16,4 +16,11 @@ public interface AnswerSessionExtMapper {
                              @Param("userName") String userName,
                              @Param("ithAnswer") Integer ithAnswer,
                              @Param("htmlName") String htmlName);
+
+    /**
+     * 查询某次答题中最远的已作答题号（跨全部题库数据表）
+     * @return 最大题号；本次答题尚无任何作答记录时返回 null
+     */
+    java.lang.Integer selectMaxAnsweredNo(@Param("userName") String userName,
+                                          @Param("ithAnswer") Integer ithAnswer);
 }
