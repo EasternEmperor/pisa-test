@@ -119,8 +119,10 @@ public class TestServiceImpl implements TestService {
         if (dataTableEnum == DataTableEnum.UNKNOWN_TABLE) {
             throw new TestException("题目错误！");
         }
-        // 防重：本次答题中该题已完成（存在 END_ITEM / TIME_UP）后，拒绝再保存任何作答事件
-        if (answerSessionExtMapper.countCompletedEvents(tableName, answerData.getUserName(), answerData.getIthAnswer(), answerData.getHtmlName()) > 0) {
+        // 防重：本次答题中该题已完成（存在 END_ITEM / TIME_UP）后，拒绝再保存任何作答事件；
+        // 例外：judge 事件（Q3 变化判断结果）在 END_ITEM 落库后发送，必须放行
+        if (!"judge".equals(answerData.getEventType())
+                && answerSessionExtMapper.countCompletedEvents(tableName, answerData.getUserName(), answerData.getIthAnswer(), answerData.getHtmlName()) > 0) {
             throw new TestException("该题已作答过，本次操作未保存");
         }
         // 插入答题数据
