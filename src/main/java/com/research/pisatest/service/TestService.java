@@ -36,5 +36,12 @@ public interface TestService {
      */
     Question getResumeQuestion(String userName, Integer ithAnswer);
 
+    /**
+     * 计算下一轮答题的轮次号：基于实际作答数据（含中断轮次）的最大轮次 + 1
+     * @param userName 用户名
+     * @return 新轮次号（从未作答过则返回 1）
+     */
+    Integer getNextIthAnswer(String userName);
+
     void finishTest(UserAnswer userAnswer);
 }

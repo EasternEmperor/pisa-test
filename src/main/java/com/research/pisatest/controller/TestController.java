@@ -100,6 +100,20 @@ public class TestController {
         }
     }
 
+    /**
+     * 计算下一轮答题的轮次号（基于实际作答数据，含中断轮次，防止轮次号撞车导致误判重复作答）
+     * @param userName 用户名
+     * @return 新轮次号
+     */
+    @GetMapping("/getNextIthAnswer")
+    public Result getNextIthAnswer(@RequestParam String userName){
+        try {
+            return Result.success(testService.getNextIthAnswer(userName), "获取轮次成功");
+        } catch (Exception e) {
+            return Result.error(Constants.ERROR_CODE, e.getMessage());
+        }
+    }
+
     @Deprecated
     @PostMapping("/submitAnswer")
     public Result submitAnswer(@RequestBody List<AnswerDataDTO> answerDataDTOs){

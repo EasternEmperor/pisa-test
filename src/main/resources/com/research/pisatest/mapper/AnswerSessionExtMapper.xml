@@ -50,4 +50,42 @@
     ) t
     </select>
 
+    <select id="selectMaxIthAnswer" resultType="java.lang.Integer">
+        select max(t.ith) from (
+        select d.ith_answer as ith from p_pt_air_controller_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_tickets_sale_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_cat_feed_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_perfume_maker_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_projection_controller_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_water_dispenser_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_video_player_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_big_air_controller_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_flower_garden_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_flashlight_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_rice_cooker_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_coffee_machine_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_fruit_tea_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_camera_controller_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_seats_schedule_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_sunlight_controller_data d where d.user_name = #{userName}
+        union all
+        select d.ith_answer as ith from p_pt_sauna_controller_data d where d.user_name = #{userName}
+    ) t
+    </select>
+
 </mapper>

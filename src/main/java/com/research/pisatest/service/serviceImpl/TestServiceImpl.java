@@ -303,4 +303,14 @@ public class TestServiceImpl implements TestService {
         return questionAssembler.DOToQuestion(target);
     }
 
+
+    /**
+     * 计算下一轮答题的轮次号：基于实际作答数据（含中断轮次）的最大轮次 + 1
+     */
+    @Override
+    public Integer getNextIthAnswer(String userName) {
+        Integer maxIth = answerSessionExtMapper.selectMaxIthAnswer(userName);
+        return (maxIth == null || maxIth < 1) ? 1 : maxIth + 1;
+    }
+
 }

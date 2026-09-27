@@ -23,4 +23,10 @@ public interface AnswerSessionExtMapper {
      */
     java.lang.Integer selectMaxAnsweredNo(@Param("userName") String userName,
                                           @Param("ithAnswer") Integer ithAnswer);
+
+    /**
+     * 查询用户出现过的最大答题轮次（跨全部题库数据表，含中断未完成的轮次）
+     * @return 最大轮次；从未作答过返回 null
+     */
+    java.lang.Integer selectMaxIthAnswer(@Param("userName") String userName);
 }
