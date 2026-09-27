@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.research.pisatest.mapper.AnswerSessionExtMapper">
+
+    <!-- tableName 由服务端从 p_pt_question.data_table 解析并经 DataTableEnum 校验，非外部可控输入 -->
+    <select id="countCompletedEvents" resultType="int">
+        select count(*)
+        from ${tableName}
+        where user_name = #{userName}
+          and ith_answer = #{ithAnswer}
+          and html_name = #{htmlName}
+          and event in ('END_ITEM', 'TIME_UP')
+    </select>
+
+</mapper>

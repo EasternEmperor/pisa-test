@@ -65,6 +65,24 @@ public class TestController {
         }
     }
 
+    /**
+     * 根据当前题目的 htmlName 获取下一题（后端校验当前题已完成，防跳题）
+     * @param htmlName 当前题目前端页面名
+     * @param userName 用户名
+     * @param ithAnswer 第几次答题
+     * @return 下一题
+     */
+    @GetMapping("/getNextQuestion")
+    public Result getNextQuestion(@RequestParam String htmlName, @RequestParam String userName, @RequestParam Integer ithAnswer){
+        try {
+            Question question = testService.getNextQuestion(userName, ithAnswer, htmlName);
+            QuestionDTO questionDTO = questionAssembler.toQuestionDTO(question);
+            return Result.success(questionDTO, "获取下一题成功");
+        } catch (Exception e) {
+            return Result.error(Constants.ERROR_CODE, e.getMessage());
+        }
+    }
+
     @Deprecated
     @PostMapping("/submitAnswer")
     public Result submitAnswer(@RequestBody List<AnswerDataDTO> answerDataDTOs){

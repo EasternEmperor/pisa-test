@@ -8,6 +8,7 @@ import com.research.pisatest.entity.AnswerData;
 import com.research.pisatest.entity.Question;
 import com.research.pisatest.entity.UserAnswer;
 import com.research.pisatest.exception.TestException;
+import com.research.pisatest.mapper.AnswerSessionExtMapper;
 import com.research.pisatest.mapper.QuestionDOMapper;
 import com.research.pisatest.pojo.*;
 import com.research.pisatest.repository.IAnswerDataRepository;
@@ -47,6 +48,9 @@ public class TestServiceImpl implements TestService {
 
     @Autowired
     private QuestionDOMapper questionDOMapper;
+
+    @Autowired
+    private AnswerSessionExtMapper answerSessionExtMapper;
 
     @Autowired
     private IUserAnswerAssembler userAnswerAssembler;
@@ -112,6 +116,13 @@ public class TestServiceImpl implements TestService {
         example.createCriteria().andHtmlNameEqualTo(answerData.getHtmlName());
         String tableName = questionDOMapper.selectByExample(example).get(0).getDataTable();
         DataTableEnum dataTableEnum = DataTableEnum.getEnumByTableName(tableName);
+        if (dataTableEnum == DataTableEnum.UNKNOWN_TABLE) {
+            throw new TestException("题目错误！");
+        }
+        // 防重：本次答题中该题已完成（存在 END_ITEM / TIME_UP）后，拒绝再保存任何作答事件
+        if (answerSessionExtMapper.countCompletedEvents(tableName, answerData.getUserName(), answerData.getIthAnswer(), answerData.getHtmlName()) > 0) {
+            throw new TestException("该题已作答过，本次操作未保存");
+        }
         // 插入答题数据
         switch (dataTableEnum) {
             case AIR_CONDITIONER_DATA -> {
@@ -205,4 +216,42 @@ public class TestServiceImpl implements TestService {
 
         userAnswerRepository.insertUserAnswer(userAnswerDO);
     }
+
+    /**
+     * 根据当前题目的 htmlName 获取下一题（要求当前题已完成作答，防止跳题与重复作答）
+     */
+    @Override
+    public Question getNextQuestion(String userName, Integer ithAnswer, String htmlName) {
+        QuestionDOExample htmlExample = new QuestionDOExample();
+        htmlExample.createCriteria().andHtmlNameEqualTo(htmlName);
+        java.util.List<QuestionDO> currentList = questionDOMapper.selectByExample(htmlExample);
+        if (currentList.isEmpty()) {
+            throw new TestException("未找到题目：" + htmlName);
+        }
+        QuestionDO current = currentList.get(0);
+        if (current.getNo() == null || current.getNo() < 0) {
+            throw new TestException("该题目不在测验流程中");
+        }
+        DataTableEnum currentEnum = DataTableEnum.getEnumByTableName(current.getDataTable());
+        if (currentEnum == DataTableEnum.UNKNOWN_TABLE) {
+            throw new TestException("题目错误！");
+        }
+        // 防跳题：当前题必须已完成作答
+        int completed = answerSessionExtMapper.countCompletedEvents(current.getDataTable(), userName, ithAnswer, htmlName);
+        if (completed <= 0) {
+            throw new TestException("该题尚未完成作答，无法进入下一题");
+        }
+        // 取题号更大的下一题
+        QuestionDOExample nextExample = new QuestionDOExample();
+        nextExample.createCriteria().andNoGreaterThan(current.getNo());
+        nextExample.setOrderByClause("no asc");
+        java.util.List<QuestionDO> nextList = questionDOMapper.selectByExample(nextExample);
+        QuestionDO next = nextList.isEmpty() ? null : nextList.get(0);
+        if (next == null) {
+            next = new QuestionDO();
+            next.setHtmlName("finished");
+        }
+        return questionAssembler.DOToQuestion(next);
+    }
+
 }
